@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 19:03:31 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/10 19:51:44 by lnicoter         ###   ########.fr       */
+/*   Created: 2024/01/10 10:38:19 by lnicoter          #+#    #+#             */
+/*   Updated: 2024/01/11 17:09:00 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-#define BRAIN_HPP
+#include "Dog.hpp"
+#include "Cat.hpp"
 
-#include <iostream>
-
-class Brain
+int main()
 {
-	public:
-		std::string ideas[100];
-		Brain();
-		~Brain();
-		Brain(Brain& onj);
-		Brain& operator=(const Brain& obj);
-		void setIdea(std::string newIdea, int pos);
-		void printBrain();
-};
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 
-#endif
+	Dog bestie;
+	Dog copyBestie(bestie);
+
+	//esempio per vedere se è deepcopy
+	copyBestie.setMind();
+	bestie.printBrain();
+	copyBestie.printBrain();
+	// const Animal* cJ = j;
+
+	delete j;//should not create a leak
+	delete i;
+	// delete cJ;
+	return 0;
+}
