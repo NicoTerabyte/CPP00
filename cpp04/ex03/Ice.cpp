@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 10:28:57 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/12 17:37:07 by lnicoter         ###   ########.fr       */
+/*   Created: 2024/01/11 18:42:32 by lnicoter          #+#    #+#             */
+/*   Updated: 2024/01/12 17:40:02 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Ice.hpp"
 
-Animal::Animal()
+Ice::Ice()
 {
-	std::cout<<"Animal constuctor called"<<std::endl;
-	this->type = "not specified";
+	std::cout<<"Ice constructor called"<<std::endl;
+	this->type = "ice";
 }
 
-Animal::~Animal()
+Ice::~Ice()
 {
-	std::cout<<"Animal destructor called"<<std::endl;
+	std::cout<<"Ice constructor called"<<std::endl;
 }
 
-Animal::Animal(Animal &obj)
+Ice::Ice(Ice& obj)
 {
 	this->type = obj.type;
 }
 
-Animal& Animal::operator=(const Animal& obj)
+Ice& Ice::operator=(const Ice& obj)
 {
 	this->type = obj.type;
 	return *this;
 }
 
-void Animal::makeSound(void) const
+
+AMateria* Ice::clone() const
 {
-	std::cout<<"Unrecognized sound"<<std::endl;
+	AMateria* iceCopy = new Ice();
+	return iceCopy;
 }
 
-std::string Animal::getType(void) const
+void Ice::use(ICharacter& target)
 {
-	return this->type;
+	std::cout<<"* shoots an ice bolt at "<<target.getName()<<" *"<<std::endl;
 }

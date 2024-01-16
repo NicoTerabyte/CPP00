@@ -6,11 +6,11 @@
 #    By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 19:25:34 by lnicoter          #+#    #+#              #
-#    Updated: 2024/01/11 17:31:53 by lnicoter         ###   ########.fr        #
+#    Updated: 2024/01/11 17:32:06 by lnicoter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = AbstractAnimals
+NAME = Materia
 
 CC = g++
 

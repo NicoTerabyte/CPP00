@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 10:28:57 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/12 17:37:07 by lnicoter         ###   ########.fr       */
+/*   Created: 2024/01/11 19:04:26 by lnicoter          #+#    #+#             */
+/*   Updated: 2024/01/12 17:41:43 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cure.hpp"
 
-Animal::Animal()
+Cure::Cure()
 {
-	std::cout<<"Animal constuctor called"<<std::endl;
-	this->type = "not specified";
+	std::cout<<"Cure constructor called"<<std::endl;
+	this->type = "Cure";
 }
 
-Animal::~Animal()
+Cure::~Cure()
 {
-	std::cout<<"Animal destructor called"<<std::endl;
+	std::cout<<"Cure constructor called"<<std::endl;
 }
 
-Animal::Animal(Animal &obj)
+Cure::Cure(Cure& obj)
 {
 	this->type = obj.type;
 }
 
-Animal& Animal::operator=(const Animal& obj)
+Cure& Cure::operator=(const Cure& obj)
 {
 	this->type = obj.type;
 	return *this;
 }
 
-void Animal::makeSound(void) const
+
+AMateria* Cure::clone() const
 {
-	std::cout<<"Unrecognized sound"<<std::endl;
+	AMateria* cureCopy = new Cure();
+	return cureCopy;
 }
 
-std::string Animal::getType(void) const
+void Cure::use(ICharacter& target)
 {
-	return this->type;
+	std::cout<<"*heals "<<target.getName()<<"'s wounds *"<<std::endl;
 }

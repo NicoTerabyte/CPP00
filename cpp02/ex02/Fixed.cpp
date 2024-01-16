@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:46:34 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/08 12:30:58 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:35:10 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,25 +116,32 @@ bool Fixed::operator!=(const Fixed& obj)
 
 Fixed Fixed::operator+(const Fixed& obj)
 {
-	Fixed tmp = this->toFloat() + obj.toFloat();
+	Fixed tmp;
+
+	tmp.setRawBits(this->getRawBits() + obj.getRawBits());
 	return tmp;
 }
 
 Fixed Fixed::operator-(const Fixed& obj)
 {
-	Fixed tmp = this->toFloat() - obj.toFloat();
+	Fixed tmp;
+	tmp.setRawBits(this->getRawBits() - obj.getRawBits());
 	return tmp;
 }
 
 Fixed Fixed::operator*(const Fixed& obj)
 {
-	Fixed tmp = (this->toFloat() * obj.toFloat());
+	Fixed tmp;
+
+	tmp.setRawBits((int)(((long) this->getRawBits() * (long) obj.getRawBits()) >> this->fractBits));
 	return tmp;
 }
 
 Fixed Fixed::operator/(const Fixed& obj)
 {
-	Fixed tmp = this->toFloat() / obj.toFloat();
+	Fixed tmp;
+
+	tmp.setRawBits((int)(((long) this->getRawBits() / (long) obj.getRawBits()) >> this->fractBits));
 	return tmp;
 }
 
