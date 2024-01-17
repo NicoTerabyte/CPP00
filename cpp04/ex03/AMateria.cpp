@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:23:24 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/12 17:32:34 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:19:26 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 AMateria::AMateria()
 {
-	std::cout<<"Default Constructor called"<<std::endl;
-	this->type = nullptr;
+	this->type = "";
 }
 
 AMateria::AMateria(std::string const & type) //what? è per ottimizzare il passaggio della stringa
 {
-	std::cout<<"Constructor called"<<std::endl;
 	this->type = type;
 }
 
 AMateria::~AMateria()
 {
-	std::cout<<"Destructor called"<<std::endl;
 }
 
 AMateria::AMateria(AMateria& obj)
 {
-	std::cout<<"Copy constructor called"<<std::endl;
 	this->type = obj.type;
 }
 
@@ -46,3 +42,7 @@ std::string const & AMateria::getType () const
 	return this->type;
 }
 
+void AMateria::use(ICharacter& target)
+{
+	std::cout<<"Sorry there was nothing her other than"<<target.getName()<<std::endl;
+}

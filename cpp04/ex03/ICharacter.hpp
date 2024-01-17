@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:43:08 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/11 20:06:32 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:06:33 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

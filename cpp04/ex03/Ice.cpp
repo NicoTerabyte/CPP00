@@ -6,24 +6,22 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:42:32 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/12 17:40:02 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:20:53 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice()
+Ice::Ice() : AMateria()
 {
-	std::cout<<"Ice constructor called"<<std::endl;
 	this->type = "ice";
 }
 
 Ice::~Ice()
 {
-	std::cout<<"Ice constructor called"<<std::endl;
 }
 
-Ice::Ice(Ice& obj)
+Ice::Ice(Ice& obj) : AMateria(obj)
 {
 	this->type = obj.type;
 }

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:21:14 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/12 17:47:05 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:20:27 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,36 @@
 
 Character::Character()
 {
-	std::cout<<"Character constructor called"<<std::endl;
 	this->cName = "Lorenzo";
 	for (int i = 0; i < 4; i++)
-		this->inventory[i] = nullptr;
+		this->inventory[i] = NULL;
 }
 
 Character::Character(std::string name)
 {
-	std::cout<<"Character constructor called"<<std::endl;
 	this->cName = name;
 	for (int i = 0; i < 4; i++)
-		this->inventory[i] = nullptr;
+		this->inventory[i] = NULL;
 }
 
 Character::~Character()
 {
-	std::cout<<"Character destructor called"<<std::endl;
 }
 
 Character::Character(Character& obj)
 {
-	std::cout<<"Character copy constructor called"<<std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = obj.inventory[i];
 }
 
 Character& Character::operator=(const Character& obj)
 {
-	std::cout<<"Character copy operator called"<<std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = obj.inventory[i];
 	return *this;
 }
 
-std::string const & Character::getName()
+std::string const & Character::getName() const
 {
 	return this->cName;
 }
@@ -58,27 +53,26 @@ void Character::equip(AMateria* m)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->inventory[i] == nullptr)
+		if (this->inventory[i] == NULL)
+		{
 			this->inventory[i] = m;
+			return ;
+		}
 	}
 }
 
 void Character::unequip(int idx)
 {
-	static AMateria* floor[100];
-	static int floorIdx = 0;
-
-	if (idx < 4 && this->inventory[idx])
+	if (idx < 4 && idx >= 0 && this->inventory[idx] != NULL)
 	{
-		floor[floorIdx] = this->inventory[idx];
-		this->inventory[idx] = nullptr;
-		floorIdx++;
+		std::cout<<"Materia "<<this->inventory[idx]->getType()<<" unequipped"<<std::endl;
+		this->inventory[idx] = NULL;
 	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 4 && this->inventory[idx] != nullptr)
+	if (idx < 4 && this->inventory[idx] != NULL)
 	{
 		this->inventory[idx]->use(target);
 	}
