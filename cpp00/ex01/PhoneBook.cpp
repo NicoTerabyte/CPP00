@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 20:07:22 by lnicoter          #+#    #+#             */
-/*   Updated: 2023/12/22 16:50:02 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:23:07 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void PhoneBook::display(int searchIndex)
 void PhoneBook::search()
 {
 	int	numOfContact;
-	int	searchIndex;
+	std::string	searchIndex;
 
 	if (this->full == true)
 		numOfContact = 8;
@@ -95,11 +95,18 @@ void PhoneBook::search()
 	}
 	std::cout<<"---------------------------------------------"<<std::endl;
 	std::cout<<"Insert the user you want to know about: ";
-	std::cin>>searchIndex;
-	if (searchIndex > numOfContact)
+	std::getline(std::cin, searchIndex);
+	if (searchIndex.length() > 1 || searchIndex[0] - 48 >= this->contactNumbers
+		|| searchIndex[0] - 48 < 0)
+	{
 		std::cout<<"Error wrong index"<<std::endl;
+		return ;
+	}
 	else
-		display(searchIndex);
+	{
+		int index = searchIndex[0] - 48;
+		display(index);
+	}
 	std::cin.ignore();
 	std::cout<<"\n";
 }
