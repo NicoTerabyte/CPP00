@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 22:27:33 by lnicoter          #+#    #+#             */
-/*   Updated: 2023/12/30 22:04:04 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/17 23:34:38 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 HumanB::HumanB(std::string name)
 {
 	this->name = name;
+	this->bWeapon = NULL;
 }
 
 // HumanB::HumanB(std::string name, Weapon* bWeapon)
