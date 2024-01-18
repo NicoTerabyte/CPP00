@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 20:07:22 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/17 19:23:07 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:25:14 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,5 @@ void PhoneBook::search()
 		int index = searchIndex[0] - 48;
 		display(index);
 	}
-	std::cin.ignore();
 	std::cout<<"\n";
 }
