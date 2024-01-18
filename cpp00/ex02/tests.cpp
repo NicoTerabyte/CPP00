@@ -16,13 +16,10 @@
 int		main(void)
 {
 
-	//dichiarazione dei vettori
 	typedef std::vector<Account::t>							  accounts_t;
 	typedef std::vector<int>								  ints_t;
-	//una coppia, che tipo di valore è un pair
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
 
-	//Amounts viene menzionato come valore nella stampa del log
 	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 };
 	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
 	accounts_t				accounts( amounts, amounts + amounts_size );
@@ -41,9 +38,6 @@ int		main(void)
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 
-	//primo metodo di account
-	/*in ordine stampa
-	timestamp index amount e una stringa con lo status?*/
 	Account::displayAccountsInfos();
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 

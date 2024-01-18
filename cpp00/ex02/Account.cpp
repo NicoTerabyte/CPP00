@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:32:16 by lnicoter          #+#    #+#             */
-/*   Updated: 2023/12/23 17:37:15 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:50:28 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ Account::Account(int initial_deposit)
 	_nbAccounts += 1;
 	_accountIndex = _nbAccounts - 1;
 	_displayTimestamp();
-	std::cout << " index:" << _accountIndex <<";amount:"<< _amount <<";created"<<std::endl;
+	std::cout << "index:" << _accountIndex <<";amount:"<< _amount <<";created"<<std::endl;
 }
 
 void Account::displayAccountsInfos(void)
