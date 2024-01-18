@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:47:46 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/03 16:45:39 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:54:59 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main(int ac, char **av)
 			}
 		}
 		else
-			std::cout << "Error wrong file\n";
+			std::cout << "Error wrong file is not possible to open it\n";
 	}
 	else
 		std::cout<<"Not enough arguments\n";

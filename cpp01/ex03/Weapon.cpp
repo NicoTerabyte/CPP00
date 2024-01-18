@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 22:12:28 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/17 23:33:38 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:06:57 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Weapon::~Weapon()
 {}
 
 //dev'essere diverso? chiedi a manu
-std::string Weapon::getType(void)
+const std::string& Weapon::getType(void)
 {
 	return this->type;
 }
