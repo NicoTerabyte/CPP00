@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 17:33:00 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/18 23:49:37 by lnicoter         ###   ########.fr       */
+/*   Created: 2024/01/03 16:52:02 by lnicoter          #+#    #+#             */
+/*   Updated: 2024/01/03 17:44:41 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
+#define HARL_HPP
 
-int	main(int ac, char **av)
+#include <iostream>
+
+class Harl
 {
-	Harl harl2;
-	if (ac == 2)
-		harl2.complain(av[1]);
-	else
-		std::cout<<"I can't complain like this man"<<std::endl;
-	return (0);
-}
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+
+	public:
+		void complain(std::string level);
+};
+
+#endif
