@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:40:08 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/12 17:37:41 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:48:13 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class Ice : public AMateria
 
 	public:
 		Ice();
-		~Ice();
-		Ice(Ice& obj);
+		virtual ~Ice();
+		Ice(const Ice& obj);
 		Ice& operator=(const Ice& onj);
 		AMateria* clone() const;
 		void use(ICharacter& target);

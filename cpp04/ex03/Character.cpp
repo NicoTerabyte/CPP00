@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:21:14 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/17 15:20:27 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:36:38 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ Character::Character(std::string name)
 
 Character::~Character()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->inventory[i])
+			delete this->inventory[i];
+	}
 }
 
 Character::Character(Character& obj)

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 20:40:30 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/16 20:43:46 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:52:27 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
+	
 	return 0;
 }

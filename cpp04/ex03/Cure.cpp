@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:04:26 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/17 16:28:00 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:18:18 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ Cure::~Cure()
 {
 }
 
-Cure::Cure(Cure& obj) : AMateria(obj)
+Cure::Cure(const Cure& obj) : AMateria(obj)
 {
-	this->type = obj.type;
+	*this = obj;
 }
 
 Cure& Cure::operator=(const Cure& obj)
@@ -35,7 +35,7 @@ Cure& Cure::operator=(const Cure& obj)
 
 AMateria* Cure::clone() const
 {
-	AMateria* cureCopy = new Cure();
+	AMateria* cureCopy = new Cure(*this);
 	return cureCopy;
 }
 

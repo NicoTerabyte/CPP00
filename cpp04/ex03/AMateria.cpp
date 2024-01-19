@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:23:24 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/17 15:19:26 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:32:55 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ AMateria::~AMateria()
 {
 }
 
-AMateria::AMateria(AMateria& obj)
+AMateria::AMateria(const AMateria& obj)
 {
 	this->type = obj.type;
 }
@@ -46,3 +46,8 @@ void AMateria::use(ICharacter& target)
 {
 	std::cout<<"Sorry there was nothing her other than"<<target.getName()<<std::endl;
 }
+
+// void AMateria::clone() const
+// {
+// 	return (AMateria*)this;
+// }

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:42:32 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/17 15:20:53 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:24:11 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Ice::~Ice()
 {
 }
 
-Ice::Ice(Ice& obj) : AMateria(obj)
+Ice::Ice(const Ice& obj) : AMateria(obj)
 {
 	this->type = obj.type;
 }
@@ -32,10 +32,9 @@ Ice& Ice::operator=(const Ice& obj)
 	return *this;
 }
 
-
 AMateria* Ice::clone() const
 {
-	AMateria* iceCopy = new Ice();
+	AMateria* iceCopy = new Ice(*this);
 	return iceCopy;
 }
 

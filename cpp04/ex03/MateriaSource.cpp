@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:02:46 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/17 15:21:08 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/19 15:11:09 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ MateriaSource::MateriaSource()
 
 MateriaSource::~MateriaSource()
 {
+	for (int i = 0; i < 4; i++)
+		if (this->known[i])
+			delete this->known[i];
 }
 
 MateriaSource::MateriaSource(MateriaSource& obj)
