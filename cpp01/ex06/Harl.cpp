@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:36:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/18 23:44:22 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:26:18 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,29 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
-	// void (Harl::*functionPointerArray[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	// std::string action[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	char choice = level[0];
 	switch (choice)
 	{
-	case 'D':
-		this->debug();
-	case 'I':
-		this->info();
-	case 'W':
-		this->warning();
-	case 'E':
-		this->error();
+		case 'D':
+			this->debug();
+			this->info();
+			this->warning();
+			this->error();
+			break ;
+		case 'I':
+			this->info();
+			this->warning();
+			this->error();
+			break ;
+		case 'W':
+			this->warning();
+			this->error();
+			break ;
+		case 'E':
+			this->error();
+			break ;
+		default:
+			std::cout<<"[Probably complaining about insignificant problems]"<<std::endl;
 	}
 
 }

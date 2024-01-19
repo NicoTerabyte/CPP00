@@ -2,7 +2,7 @@ NAME = harlFilter
 
 CC = g++
 
-FLAGS =  -std=c++98 -g
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 SOURCE = $(wildcard *.cpp) \
 
