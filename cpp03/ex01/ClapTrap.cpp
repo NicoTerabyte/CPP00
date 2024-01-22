@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:53 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/09 17:37:41 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:23:23 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ClapTrap::~ClapTrap()
 	std::cout<<"ClapTrap Destructor called\n";
 }
 
-ClapTrap::ClapTrap(ClapTrap& obj)
+ClapTrap::ClapTrap(const ClapTrap& obj)
 {
 	std::cout<<"Copy constructor called\n";
 	this->name = obj.name;

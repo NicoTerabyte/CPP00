@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:16:57 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 00:11:18 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:24:48 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class FragTrap : public ClapTrap
 		FragTrap();
 		FragTrap(std::string name);
 		~FragTrap();
-		FragTrap(FragTrap& obj);
+		FragTrap(const FragTrap& obj);
 		FragTrap& operator=(const FragTrap& obj);
 		void highFiveGuys(void);
 };

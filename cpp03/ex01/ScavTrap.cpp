@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:43:16 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/09 19:23:52 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:23:06 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ScavTrap::~ScavTrap()
 }
 
 
-ScavTrap::ScavTrap(ScavTrap& obj) : ClapTrap(obj)
+ScavTrap::ScavTrap(const ScavTrap& obj) : ClapTrap(obj)
 {
 	std::cout<<"Copy constructor called\n";
 	this->name = obj.name;

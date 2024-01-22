@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:25:19 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/09 16:59:07 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:23:12 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class ScavTrap : public ClapTrap
 		ScavTrap();
 		ScavTrap(std::string name);
 		~ScavTrap();
-		ScavTrap(ScavTrap& obj);
+		ScavTrap(const ScavTrap& obj);
 		ScavTrap& operator=(const ScavTrap& obj);
 		void guardGate();
 };
