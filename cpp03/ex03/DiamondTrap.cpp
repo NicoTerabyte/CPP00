@@ -6,14 +6,14 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:29:34 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 00:15:10 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:16:38 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 #include "ClapTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FragTrap(name)
 {
 	std::cout<<"The ibrid constructor has been called"<<std::endl;
 	this->name = name;
@@ -28,7 +28,7 @@ DiamondTrap::~DiamondTrap()
 	std::cout<<"The ibrid destructor has been called"<<std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& obj)
+DiamondTrap::DiamondTrap(const DiamondTrap& obj) : ClapTrap(obj), ScavTrap(obj), FragTrap(obj)
 {
 	std::cout<<"Ibrid Copy constructor called\n";
 	this->name = obj.name;

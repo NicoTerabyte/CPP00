@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:16:57 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 00:12:52 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:13:27 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class FragTrap : virtual public ClapTrap
 		FragTrap();
 		FragTrap(std::string name);
 		~FragTrap();
-		FragTrap(FragTrap& obj);
+		FragTrap(const FragTrap& obj);
 		FragTrap& operator=(const FragTrap& obj);
 		void highFiveGuys(void);
 };
