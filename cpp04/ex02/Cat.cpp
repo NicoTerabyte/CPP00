@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:36:36 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/10 20:00:34 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:33:45 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Cat& Cat::operator=(const Cat& obj)
 
 void Cat::makeSound(void) const
 {
-	std::cout<<"Bro (cat's don't bark) 🤨🤨🤨🤨🤨🤨"<<std::endl;
+	std::cout<<"Bro (cat's doesn't bark) 🤨🤨🤨🤨🤨🤨"<<std::endl;
 }
 
 void Cat::setMind()
