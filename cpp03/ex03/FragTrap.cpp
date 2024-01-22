@@ -1,59 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:22:35 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/09 19:34:17 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 00:11:18 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FlagTrap.hpp"
+#include "FragTrap.hpp"
 
-FlagTrap::FlagTrap() : ClapTrap()
+FragTrap::FragTrap() : ClapTrap()
 {
-	std::cout<<"FlagTrap default constructor called\n";
-	this->name = "FlagTrap";
+	std::cout<<"FragTrap default constructor called\n";
+	this->name = "FragTrap";
 	this->AttackDamage = 30;
 	this->energyPoints = 100;
 	this->hitPoints = 100;
 }
 
-FlagTrap::FlagTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout<<"FlagTrap constructor called\n";
+	std::cout<<"FragTrap constructor called\n";
 	this->name = name;
 	this->AttackDamage = 30;
 	this->energyPoints = 100;
 	this->hitPoints = 100;
 }
 
-FlagTrap::~FlagTrap()
+FragTrap::~FragTrap()
 {
-	std::cout<<"FlagTrap Destructor called\n";
+	std::cout<<"FragTrap Destructor called\n";
 }
 
-FlagTrap::FlagTrap(FlagTrap& obj) : ClapTrap(obj)
+FragTrap::FragTrap(FragTrap& obj) : ClapTrap(obj)
 {
-	std::cout<<"FlagTrap Copy constructor called\n";
+	std::cout<<"FragTrap Copy constructor called\n";
 	this->name = obj.name;
 	this->AttackDamage = obj.AttackDamage;
 	this->energyPoints = obj.energyPoints;
 	this->hitPoints = obj.hitPoints;
 }
 
-FlagTrap& FlagTrap::operator=(const FlagTrap& obj)
+FragTrap& FragTrap::operator=(const FragTrap& obj)
 {
-	std::cout<<"FlagTrap copy operator called\n";
+	std::cout<<"FragTrap copy operator called\n";
 	this->name = obj.name;
 	this->AttackDamage = obj.AttackDamage;
 	this->energyPoints = obj.energyPoints;
 	return *this;
 }
 
-void FlagTrap::highFiveGuys(void)
+void FragTrap::highFiveGuys(void)
 {
 	int	answer;
 	std::cout<<this->name<<" wants to give you an high five do you accept it?"<<std::endl;

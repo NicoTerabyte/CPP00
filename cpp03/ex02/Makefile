@@ -6,11 +6,11 @@
 #    By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 19:25:34 by lnicoter          #+#    #+#              #
-#    Updated: 2024/01/09 19:24:47 by lnicoter         ###   ########.fr        #
+#    Updated: 2024/01/22 00:11:18 by lnicoter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = FlagTrap
+NAME = FragTrap
 
 CC = g++
 

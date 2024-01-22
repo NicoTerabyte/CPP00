@@ -6,11 +6,11 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:19:07 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/09 19:35:34 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 00:11:18 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FlagTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
@@ -20,7 +20,7 @@ int	main(void)
 	std::cout<<"Give the claptrap a name ";
 	std::cin>>name;
 
-	FlagTrap bot(name);
+	FragTrap bot(name);
 	// ClapTrap beta("Gianni");
 	// while (action)
 	// {

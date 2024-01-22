@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 19:16:57 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/09 19:27:33 by lnicoter         ###   ########.fr       */
+/*   Created: 2024/01/09 16:25:19 by lnicoter          #+#    #+#             */
+/*   Updated: 2024/01/21 21:46:57 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLAGTRAP_HPP
-#define FLAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-class FlagTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
-	private :
+	private:
 
 	public:
-		FlagTrap();
-		FlagTrap(std::string name);
-		~FlagTrap();
-		FlagTrap(FlagTrap& obj);
-		FlagTrap& operator=(const FlagTrap& obj);
-		void highFiveGuys(void);
+		ScavTrap();
+		ScavTrap(std::string name);
+		~ScavTrap();
+		ScavTrap(ScavTrap& obj);
+		ScavTrap& operator=(const ScavTrap& obj);
+		void guardGate();
 };
-
 #endif
