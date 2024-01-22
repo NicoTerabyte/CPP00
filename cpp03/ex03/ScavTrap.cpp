@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:43:16 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 14:14:15 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:50:22 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout<<" ScavTrap Destructor called\n";
+	std::cout<<"ScavTrap Destructor called\n";
 }
 
 

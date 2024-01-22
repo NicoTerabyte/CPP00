@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:53 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 14:23:59 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:59:29 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->energyPoints >= 0 && this->hitPoints > 0)
+	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
 		this->hitPoints-=amount;
 		if (this->hitPoints <= 0)
@@ -79,7 +79,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 			this->hitPoints = 0;
 		}
 		else
-			std::cout<<this->name<<" got hit "<<this->hitPoints<<" left\n";
+			std::cout<<" "<<this->name<<" got hit "<<this->hitPoints<<" left\n";
 	}
 	else
 		std::cout<<this->name<<" is defeated or has finished his energy\n";
@@ -87,14 +87,14 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->energyPoints > 0 && this->hitPoints >= 0)
+	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
 		this->hitPoints += amount;
 		this->energyPoints--;
 		std::cout<<this->name<<" restored "<<amount<<" hitpoints, now he has "
-				<<this->hitPoints<<" in total\n";
+				<<this->hitPoints<<" in total"<<std::endl;
 	}
 	else
-		std::cout<<"No energy or hit points left, "<<this->name<<" can't act anymore\n";
+		std::cout<<"No energy or hit points left, "<<this->name<<" can't act anymore"<<std::endl;
 	std::cout<<"Energy left to act "<<this->energyPoints;
 }

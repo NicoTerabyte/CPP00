@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:22:35 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 00:11:18 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:54:48 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ FragTrap::~FragTrap()
 	std::cout<<"FragTrap Destructor called\n";
 }
 
-FragTrap::FragTrap(FragTrap& obj) : ClapTrap(obj)
+FragTrap::FragTrap(const FragTrap& obj) : ClapTrap(obj)
 {
 	std::cout<<"FragTrap Copy constructor called\n";
 	this->name = obj.name;
