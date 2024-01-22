@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:34:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/10 10:59:36 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:57:19 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Dog::~Dog()
 	std::cout<<"Dog destructor called"<<std::endl;
 }
 
-Dog::Dog(Dog &obj) : Animal(obj)
+Dog::Dog(const Dog &obj) : Animal(obj)
 {
 	this->type = obj.type;
 }

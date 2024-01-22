@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:18:56 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/10 11:43:51 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:56:39 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Animal
 	public:
 		Animal();
 		virtual ~Animal();
-		Animal(Animal& obj);
+		Animal(const Animal& obj);
 		Animal& operator=(const Animal& obj);
 		virtual void makeSound(void) const;
 		std::string getType(void) const;

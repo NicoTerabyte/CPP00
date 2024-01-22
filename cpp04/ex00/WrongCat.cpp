@@ -1,57 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 17:52:42 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 20:04:57 by lnicoter         ###   ########.fr       */
+/*   Created: 2024/01/22 20:16:18 by lnicoter          #+#    #+#             */
+/*   Updated: 2024/01/22 20:20:02 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
-/*
-		WrongAnimal();
-		~WrongAnimal();
-		WrongAnimal(WrongAnimal& obj);
-		WrongAnimal& operator=(const WrongAnimal& obj);
-		void makeSound(void) const;
-		std::string getType(void) const;
-*/
+		// WrongCat();
+		// ~WrongCat();
+		// WrongCat(const WrongCat& obj);
+		// WrongCat& operator=(const WrongCat& obj);
+		// void makeSound(void) const;
+		// std::string getType(void) const;
 
-WrongAnimal::WrongAnimal()
+WrongCat::WrongCat() : WrongAnimal()
 {
-	std::cout<<"WrongAnimal default constructor called"<<std::endl;
-	this->type = "Unkown";
+	std::cout<<"WrongCat constructor called"<<std::endl;
+	this->type = "WrongCat";
 }
 
-WrongAnimal::~WrongAnimal()
+WrongCat::~WrongCat()
 {
-	std::cout<<"WrongAnimal default destructor called"<<std::endl;
+	std::cout<<"WrongCat default destructor called"<<std::endl;
 }
 
 
-WrongAnimal::WrongAnimal(const WrongAnimal& obj)
+WrongCat::WrongCat(const WrongCat& obj) : WrongAnimal(obj)
 {
 	std::cout<<"Copy constructor called"<<std::endl;
 	this->type = obj.type;
 }
 
-WrongAnimal& WrongAnimal::operator=(const WrongAnimal& obj)
+WrongCat& WrongCat::operator=(const WrongCat& obj)
 {
 	std::cout<<"Copy assignement operator called"<<std::endl;
 	this->type = obj.type;
 	return *this;
 }
 
-void WrongAnimal::makeSound() const
+void WrongCat::makeSound() const
 {
 	std::cout<<"Wrong sound damn"<<std::endl;
 }
 
-std::string WrongAnimal::getType(void) const
+std::string WrongCat::getType(void) const
 {
 	return this->type;
 }
