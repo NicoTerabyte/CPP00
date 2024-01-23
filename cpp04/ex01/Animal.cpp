@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:28:57 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/12 17:37:07 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:56:45 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Animal::~Animal()
 	std::cout<<"Animal destructor called"<<std::endl;
 }
 
-Animal::Animal(Animal &obj)
+Animal::Animal(const Animal &obj)
 {
 	this->type = obj.type;
 }

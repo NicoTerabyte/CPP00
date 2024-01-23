@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:02:46 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/19 15:11:09 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:18:04 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ MateriaSource::~MateriaSource()
 			delete this->known[i];
 }
 
-MateriaSource::MateriaSource(MateriaSource& obj)
+MateriaSource::MateriaSource(const MateriaSource& obj)
 {
 	for (int i = 0; i < 4; i++)
 		this->known[i] = obj.known[i];

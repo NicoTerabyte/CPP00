@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:43:10 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/17 13:48:50 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:21:17 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ class Character : public ICharacter
 	private:
 		std::string cName;
 		AMateria* inventory[4];
+		AMateria* floor[200];
 	public:
 		Character();
 		Character(std::string name);
 		~Character();
-		Character(Character& obj);
+		Character(const Character& obj);
 		Character& operator=(const Character& obj);
 		/*METHODS inherited*/
 		std::string const & getName() const;

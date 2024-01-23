@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:34:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/10 20:02:22 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:58:42 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Dog::~Dog()
 	delete this->dogMind;
 }
 
-Dog::Dog(Dog &obj) : Animal(obj)
+Dog::Dog(const Dog &obj) : Animal(obj)
 {
 	this->type = obj.type;
 	this->dogMind = new Brain(*obj.dogMind);

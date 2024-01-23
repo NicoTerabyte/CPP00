@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 20:40:30 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/19 14:52:27 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:18:39 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int main()
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	me->unequip(0);
 	delete bob;
 	delete me;
 	delete src;
-	
+
 	return 0;
 }

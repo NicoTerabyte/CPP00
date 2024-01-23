@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:16:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 20:20:02 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:13:31 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ WrongCat& WrongCat::operator=(const WrongCat& obj)
 
 void WrongCat::makeSound() const
 {
-	std::cout<<"Wrong sound damn"<<std::endl;
+	std::cout<<"WrongCat sound"<<std::endl;
 }
 
 std::string WrongCat::getType(void) const

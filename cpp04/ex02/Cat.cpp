@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:36:36 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/01/22 17:33:45 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:04:30 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Cat::~Cat()
 	delete this->catMind;
 }
 
-Cat::Cat(Cat &obj) : Animal(obj)
+Cat::Cat(const Cat &obj) : Animal(obj)
 {
 	this->type = obj.type;
 	this->catMind = new Brain(*obj.catMind);
