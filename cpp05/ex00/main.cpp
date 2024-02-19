@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:52 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/19 16:12:50 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/19 22:24:45 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ int	main(void)
 	{
 		Bureaucrat orig("Carlo", 3);
 		Bureaucrat primo("Piero", 1);
-
+		Bureaucrat base;
 		Bureaucrat evil("spino", 150);
 		Bureaucrat roughneck("punto", 150);
 
-		roughneck.decrementGrade();
-		primo.incrementGrade();
+		// roughneck.decrementGrade();
+		// primo.incrementGrade();
 		std::cout<<primo.getGrade()<<std::endl;
+
+		std::cout<<base.getGrade()<<std::endl;
+		std::cout<<base.getName()<<std::endl;
 	}
 	catch (const std::exception& e)
 	{

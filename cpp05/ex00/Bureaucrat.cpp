@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:24:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/19 17:26:06 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/19 22:24:13 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return "Error, the grade is too low.";
 }
-
 
 Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), grade(grade)
 {
