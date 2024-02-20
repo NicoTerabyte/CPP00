@@ -6,26 +6,22 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:52 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/19 22:49:09 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:29:52 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "median.hpp"
 
 int	main(void)
 {
 	try
 	{
-		Bureaucrat orig("Carlo", 3);
-		Bureaucrat primo("Piero", 1);
-		Bureaucrat base;
-		Bureaucrat evil("spino", 150);
-		Bureaucrat roughneck("punto", 150);
+		Bureaucrat	firstDay("Davide", 5);
+		Form		firstForm("Possibility to drive", 4, 2);
 
-		// roughneck.decrementGrade();
-		// primo.incrementGrade();
-		std::cout<<primo;
-		std::cout<<base;
+		firstForm.beSigned(firstDay);
+		std::cout<<firstForm<<std::endl;
+
 	}
 	catch (const std::exception& e)
 	{
