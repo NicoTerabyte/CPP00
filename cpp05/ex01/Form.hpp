@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:37:59 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:18 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:46:48 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ class Form
 		const int			gradeToExecute;
 
 	public:
-		// Form(const std::string name = "default", bool sign = false,
-		// 	const int gradeToSign = 25, const int gradeToExecute = 10);
-		Form(const std::string name, const int gradeToSign, const int gradeToExecute);
+		Form(const std::string name = "default", const int gradeToSign = 25, const int gradeToExecute = 10);
+		// Form(const std::string name, const int gradeToSign, const int gradeToExecute);
 		~Form();
 		Form(Form& obj);
 		Form& operator=(const Form &obj);
