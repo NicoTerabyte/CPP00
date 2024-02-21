@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:24:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/20 16:11:56 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:10:26 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void Bureaucrat::decrementGrade()
 		throw GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(Form& obj)
+void	Bureaucrat::signForm(AForm& obj)
 {
 	if (obj.getSign() == true)
 		std::cout<<*this<<" signed "<<obj<<std::endl;
