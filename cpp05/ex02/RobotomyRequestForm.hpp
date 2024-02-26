@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShruberryCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 16:49:21 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/26 17:42:07 by lnicoter         ###   ########.fr       */
+/*   Created: 2024/02/26 18:44:41 by lnicoter          #+#    #+#             */
+/*   Updated: 2024/02/26 19:03:50 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBERRYCREATIONFORM_HPP
-#define SHRUBERRYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
 #include "median.hpp"
 
-class ShruberryCreationForm : virtual public AForm
+class RobotomyRequestForm : virtual public AForm
 {
 	private:
 		std::string target;
 	public:
-		ShruberryCreationForm(std::string target = "YoMama");
-		// ShruberryCreationForm(std::string target);
-		~ShruberryCreationForm();
+		RobotomyRequestForm(std::string target = "YoMama");
+		~RobotomyRequestForm();
 		std::string getTarget(void) const;
-		ShruberryCreationForm(const ShruberryCreationForm& obj);
-		ShruberryCreationForm& operator=(const ShruberryCreationForm& obj);
+		RobotomyRequestForm(const RobotomyRequestForm& obj);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
 
 		//AForm method inherited
 		virtual void		execute(Bureaucrat const & executor);
-
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:36:33 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/21 20:04:27 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:42:43 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,7 @@ void ShruberryCreationForm::execute(Bureaucrat const & executor)
 			else
 				std::cout<<"Error the file can't be opened"<<std::endl;
 		}
-		/*Nota per il futuro:
-			capire come ereditare le classi per utilizzare
-			le exception del padre
-		*/
-		throw GradeTooLowException();
+		else
+			throw GradeTooLowException();
 	}
 }

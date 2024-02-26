@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:37:59 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/21 19:53:41 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:18:38 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@ class Bureaucrat;
 
 class AForm
 {
-	class GradeTooHighException : public std::exception
-	{
-		public:
-			virtual const char* what() const throw();
-	};
-	class GradeTooLowException : public std::exception
-	{
-		public:
-			virtual const char* what() const throw();
-	};
+	protected:
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 	private:
 		const std::string	name;
 		bool				sign;

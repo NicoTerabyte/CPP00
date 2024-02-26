@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:18:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/21 18:21:14 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:46:10 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <fstream>
+#include <cstdlib>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
