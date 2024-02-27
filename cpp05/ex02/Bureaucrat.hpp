@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:44:14 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:37 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:11:24 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 
 #include "median.hpp"
-class Form;
+
+class AForm;
 
 class Bureaucrat
 {
@@ -47,7 +48,10 @@ class Bureaucrat
 		void				setGrade(int grade);
 		void				incrementGrade();
 		void				decrementGrade();
-		void				signForm(Form& obj);
+		void				signForm(AForm& obj);
+
+		//ex02
+		void				executeForm(AForm const & form);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

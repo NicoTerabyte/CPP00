@@ -1,0 +1,15 @@
+{
+	"files.associations": {
+		"*.tcc": "cpp",
+		"compare": "cpp",
+		"format": "cpp",
+		"limits": "cpp",
+		"ratio": "cpp",
+		"__config": "cpp",
+		"locale": "cpp",
+		"type_traits": "cpp",
+		"iostream": "cpp",
+		"fstream": "cpp",
+		"iosfwd": "cpp"
+	}
+}

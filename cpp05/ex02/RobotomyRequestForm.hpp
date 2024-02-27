@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:44:41 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/26 19:03:50 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:37:04 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 #include "median.hpp"
 
-class RobotomyRequestForm : virtual public AForm
+class RobotomyRequestForm :  virtual public AForm
 {
 	private:
 		std::string target;
+		const int	sign;
+		const int	exec;
 	public:
 		RobotomyRequestForm(std::string target = "YoMama");
 		~RobotomyRequestForm();
@@ -27,7 +29,7 @@ class RobotomyRequestForm : virtual public AForm
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
 
 		//AForm method inherited
-		virtual void		execute(Bureaucrat const & executor);
+		void		execute(Bureaucrat const & executor) const;
 };
 
 #endif

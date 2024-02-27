@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:37:59 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/26 18:18:38 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:34:18 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class AForm
 		AForm(const std::string name = "default", const int gradeToSign = 25, const int gradeToExecute = 10);
 		// AForm(const std::string name, const int gradeToSign, const int gradeToExecute);
 		virtual ~AForm();
-		AForm(AForm& obj);
+		AForm(const AForm& obj);
 		AForm& operator=(const AForm &obj);
 
 		const std::string	getName(void) const;

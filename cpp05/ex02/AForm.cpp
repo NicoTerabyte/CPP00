@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:13:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/26 17:27:07 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:34:23 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool AForm::getSign(void) const
 	return this->sign;
 }
 
-AForm::AForm(AForm& obj) : name(obj.getName()), sign(obj.getSign()), gradeToSign(obj.getGradeToSign()),
+AForm::AForm(const AForm& obj) : name(obj.getName()), sign(obj.getSign()), gradeToSign(obj.getGradeToSign()),
 gradeToExecute(obj.getGradetoExecute())
 {
 	std::cout<<"The copy construttor of the Aform has been called"<<std::endl;

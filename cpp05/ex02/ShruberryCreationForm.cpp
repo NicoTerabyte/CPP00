@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:36:33 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/26 18:42:43 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:45:37 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 		virtual void		execute(Bureaucrat const & executor);
 */
 
-ShruberryCreationForm::ShruberryCreationForm(std::string target) : target(target)
+ShruberryCreationForm::ShruberryCreationForm(std::string target) : AForm(), target(target), sign(145), exec(137)
 {
 	std::cout<<"The shruberry has been created"<<std::endl;
 }
@@ -38,7 +38,7 @@ std::string ShruberryCreationForm::getTarget(void) const
 	return this->target;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm& obj) : target(obj.getTarget())
+ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm& obj) : AForm(), target(obj.getTarget()), sign(obj.getGradeToSign()), exec(obj.getGradetoExecute())
 {
 	std::cout<<"The copy constructor of shruberry has been called"<<std::endl;
 }
@@ -46,11 +46,13 @@ ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm& obj) :
 ShruberryCreationForm& ShruberryCreationForm::operator=(const ShruberryCreationForm& obj)
 {
 	this->target = obj.target;
+	return *this;
 }
 
-void ShruberryCreationForm::execute(Bureaucrat const & executor)
+void ShruberryCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::string nameFile;
+	const char* trueNameFile;
 
 	std::cout<<"Let's see..... is the form executable?"<<std::endl;
 	if (this->getSign() == true)
@@ -59,7 +61,8 @@ void ShruberryCreationForm::execute(Bureaucrat const & executor)
 		if (executor.getGrade() <= 137)
 		{
 			nameFile = this->getTarget() + "_shruberry";
-			std::ofstream file(nameFile);
+			trueNameFile = nameFile.c_str();
+			std::ofstream file(trueNameFile);
 			if (file.is_open())
 			{
 				file <<"          .     .  .      +     .      .          .         "<<std::endl;

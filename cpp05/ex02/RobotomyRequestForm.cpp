@@ -6,13 +6,13 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:02:14 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/26 19:10:51 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:38:19 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(), target(target), sign(72), exec(45)
 {
 	std::cout<<"The shruberry has been created"<<std::endl;
 }
@@ -27,7 +27,7 @@ std::string RobotomyRequestForm::getTarget(void) const
 	return this->target;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : target(obj.getTarget())
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : AForm(obj), target(obj.getTarget()), sign(obj.getGradeToSign()), exec(obj.getGradetoExecute())
 {
 	std::cout<<"The copy constructor of shruberry has been called"<<std::endl;
 }
@@ -35,11 +35,12 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : targe
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj)
 {
 	this->target = obj.target;
+	return *this;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor)
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	srand(static_cast<unsigned int>(time(nullptr)));
+	srand(static_cast<unsigned int>(time(NULL)));
 
 	std::cout<<"You want to get modified huh? let's what can you do"<<std::endl;
 	if (this->getSign() == true)

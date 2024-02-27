@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:18:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/26 18:46:10 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:19:59 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 #include <stdexcept>
 #include <fstream>
 #include <cstdlib>
-#include "Bureaucrat.hpp"
 #include "AForm.hpp"
-
+#include "Bureaucrat.hpp"
+// #include "ShruberryCreationForm.hpp"
+// #include "RobotomyRequestForm.hpp"
+// #include "PresidetialPardonForm.hpp"
 #endif

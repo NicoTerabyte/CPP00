@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:24:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/20 16:10:26 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:26:49 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,15 @@ void	Bureaucrat::signForm(AForm& obj)
 		std::cout<<*this<<" signed "<<obj<<std::endl;
 	else
 		std::cout<<*this<<" couldn't sign "<<obj<<" because is not ready"<<std::endl;
+}
+
+void	Bureaucrat::executeForm(const AForm& form)
+{
+	std::cout<<"Let me see if i can execute this form"<<std::endl;
+	if (this->getGrade() <= form.getGradetoExecute())
+	{
+		std::cout<<*this<<" executed "<<form<<std::endl;
+	}
+	else
+		std::cout<<*this<<" couldn't execute "<<form<<std::endl;
 }
