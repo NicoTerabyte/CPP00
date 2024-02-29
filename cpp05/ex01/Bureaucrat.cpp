@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:24:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/20 16:11:56 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:25:11 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,14 @@ void Bureaucrat::decrementGrade()
 
 void	Bureaucrat::signForm(Form& obj)
 {
-	if (obj.getSign() == true)
+	try
+	{
+		obj.beSigned(*this);
 		std::cout<<*this<<" signed "<<obj<<std::endl;
-	else
-		std::cout<<*this<<" couldn't sign "<<obj<<" because is not ready"<<std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout<<*this<<" couldn't sign "<<obj<<" because "<<e.what()<<std::endl;
+	}
+
 }

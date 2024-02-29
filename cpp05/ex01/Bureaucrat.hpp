@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:44:14 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/20 16:11:05 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:22:37 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,15 @@ class Form;
 
 class Bureaucrat
 {
-	public:
-		class GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
-		class GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
 
 	private:
 		const std::string	name;
 		int					grade;
+		Bureaucrat();
 
 	public:
 		// Bureaucrat(const std::string name, int grade);
-		Bureaucrat(const std::string name = "jim", int grade = 25);
+		Bureaucrat(const std::string name, int grade);
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat& obj);
 		Bureaucrat& operator=(const Bureaucrat& obj);
@@ -48,6 +38,17 @@ class Bureaucrat
 		void				incrementGrade();
 		void				decrementGrade();
 		void				signForm(Form& obj);
+		//exceptions override
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

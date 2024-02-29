@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:37:59 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/20 15:46:48 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:25:48 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,6 @@ class Bureaucrat;
 
 class Form
 {
-	class GradeTooHighException : public std::exception
-	{
-		public:
-			virtual const char* what() const throw();
-	};
-	class GradeTooLowException : public std::exception
-	{
-		public:
-			virtual const char* what() const throw();
-	};
 
 	private:
 		const std::string	name;
@@ -48,6 +38,17 @@ class Form
 		int					getGradeToSign(void) const;
 		int					getGradetoExecute(void) const;
 		void				beSigned(Bureaucrat& theBur);
+		//exception
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 std::ostream& operator<<(std::ostream& os, const Form& obj);
