@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:13:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/27 20:34:23 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:59:20 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,19 @@ const char* AForm::GradeTooLowException::what() const throw()
 	return "Error grade is too Low\n";
 }
 
-AForm::AForm(const std::string name, const int gradeToSign, const int gradeToExecute) :
+const char* AForm::NotSignedException::what() const throw()
+{
+	return "Error the form is not signed\n";
+}
+
+AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute) :
 name(name), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute)
 {
 	sign = false;
 	(void)sign;
 	if (gradeToSign < 1 || gradeToExecute < 1)
 		throw GradeTooHighException();
-	if (gradeToSign > 150 || gradeToSign > 150)
+	if (gradeToSign > 150 || gradeToExecute > 150)
 		throw GradeTooLowException();
 	std::cout<<"The Aform was printed"<<std::endl;
 }
@@ -49,7 +54,7 @@ int AForm::getGradeToSign(void) const
 	return this->gradeToSign;
 }
 
-const std::string AForm::getName(void) const
+std::string AForm::getName(void) const
 {
 	return this->name;
 }
@@ -59,7 +64,7 @@ bool AForm::getSign(void) const
 	return this->sign;
 }
 
-AForm::AForm(const AForm& obj) : name(obj.getName()), sign(obj.getSign()), gradeToSign(obj.getGradeToSign()),
+AForm::AForm(const AForm& obj) : name(obj.getName()), gradeToSign(obj.getGradeToSign()),
 gradeToExecute(obj.getGradetoExecute())
 {
 	std::cout<<"The copy construttor of the Aform has been called"<<std::endl;
@@ -67,7 +72,8 @@ gradeToExecute(obj.getGradetoExecute())
 
 AForm& AForm::operator=(const AForm& obj)
 {
-	this->sign = obj.getSign();
+	if (this != &obj)
+		this->sign = obj.getSign();
 	return *this;
 }
 

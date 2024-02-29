@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:24:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/27 16:26:49 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:46:49 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "Error, the grade is too low.";
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), grade(grade)
+Bureaucrat::Bureaucrat(const std::string& name, int grade): name(name), grade(grade)
 {
 
 	if (grade > 150)
@@ -55,7 +55,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat& obj):name(obj.getName()), grade(obj.get
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 {
-	this->grade = obj.getGrade();
+	if (this != &obj)
+		this->grade = obj.getGrade();
 	return *this;
 }
 
@@ -89,19 +90,29 @@ void Bureaucrat::decrementGrade()
 
 void	Bureaucrat::signForm(AForm& obj)
 {
-	if (obj.getSign() == true)
-		std::cout<<*this<<" signed "<<obj<<std::endl;
-	else
-		std::cout<<*this<<" couldn't sign "<<obj<<" because is not ready"<<std::endl;
+	try
+	{
+		obj.beSigned(*this);
+		std::cout<<*this<<" signed "<<obj.getName()<<std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout<<*this<<" couldn't sign "<<obj<<" because "<<e.what()<<std::endl;
+	}
 }
 
 void	Bureaucrat::executeForm(const AForm& form)
 {
 	std::cout<<"Let me see if i can execute this form"<<std::endl;
-	if (this->getGrade() <= form.getGradetoExecute())
+	try
 	{
+		form.execute(*this);
 		std::cout<<*this<<" executed "<<form<<std::endl;
 	}
-	else
-		std::cout<<*this<<" couldn't execute "<<form<<std::endl;
+	catch(const std::exception& e)
+	{
+		std::cout <<*this<< " couldn't execute "<<form<<std::endl;
+		std::cout<<"because "<<e.what()<<std::endl;
+	}
+
 }

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:49:21 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/27 20:36:59 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:17:32 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 class ShruberryCreationForm : virtual public AForm
 {
 	private:
-		std::string target;
-		const int	sign;
-		const int	exec;
+		const std::string target;
+
 	public:
-		ShruberryCreationForm(std::string target = "YoMama");
+		ShruberryCreationForm(const std::string& target);
 		// ShruberryCreationForm(std::string target);
 		~ShruberryCreationForm();
 		std::string getTarget(void) const;
@@ -30,7 +29,7 @@ class ShruberryCreationForm : virtual public AForm
 		ShruberryCreationForm& operator=(const ShruberryCreationForm& obj);
 
 		//AForm method inherited
-		virtual void		execute(Bureaucrat const & executor) const;
+		virtual void		execute(const Bureaucrat& executor) const;
 
 };
 

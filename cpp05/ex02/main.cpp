@@ -6,22 +6,30 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:52 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/27 20:46:52 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:48:03 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "ShruberryCreationForm.hpp"
+#include "ShruberryCreationForm.hpp"
 #include "PresidetialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main(void)
 {
 	try
 	{
-		Bureaucrat	me("Lorenzo", 1);
+		Bureaucrat	me("Lorenzo", 30);
 		PresidentialPardonForm who("damn");
+		ShruberryCreationForm plant("home");
+		RobotomyRequestForm mech("Cyborg");
 
-		who.beSigned(me);
-		who.execute(me);
+
+		me.signForm(who);
+		me.signForm(mech);
+		me.signForm(plant);
+		me.executeForm(who);
+		me.executeForm(mech);
+		me.executeForm(plant);
 	}
 	catch (const std::exception& e)
 	{

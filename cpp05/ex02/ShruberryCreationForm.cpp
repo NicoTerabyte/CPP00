@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:36:33 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/27 20:45:37 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:23:37 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 		virtual void		execute(Bureaucrat const & executor);
 */
 
-ShruberryCreationForm::ShruberryCreationForm(std::string target) : AForm(), target(target), sign(145), exec(137)
+ShruberryCreationForm::ShruberryCreationForm(const std::string& target) : AForm("ShruberryForm", 145, 137), target(target)
 {
 	std::cout<<"The shruberry has been created"<<std::endl;
 }
@@ -38,18 +38,18 @@ std::string ShruberryCreationForm::getTarget(void) const
 	return this->target;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm& obj) : AForm(), target(obj.getTarget()), sign(obj.getGradeToSign()), exec(obj.getGradetoExecute())
+ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm& obj) : AForm(obj)  , target(obj.getTarget())
 {
 	std::cout<<"The copy constructor of shruberry has been called"<<std::endl;
 }
 
 ShruberryCreationForm& ShruberryCreationForm::operator=(const ShruberryCreationForm& obj)
 {
-	this->target = obj.target;
+	(void) obj;
 	return *this;
 }
 
-void ShruberryCreationForm::execute(Bureaucrat const & executor) const
+void ShruberryCreationForm::execute(const Bureaucrat& executor) const
 {
 	std::string nameFile;
 	const char* trueNameFile;
@@ -87,4 +87,6 @@ void ShruberryCreationForm::execute(Bureaucrat const & executor) const
 		else
 			throw GradeTooLowException();
 	}
+	else
+		throw NotSignedException();
 }
