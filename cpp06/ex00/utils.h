@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:21:11 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/03 20:30:36 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:03:31 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ScalarConverter.hpp"
 
-void	printConv(bool doNotPrintChar);
+void	printConv(int doNotPrintChar, int printChar, char cArgv);
 int		halfLiteralsCheck(std::string argv);
 void	printHalfLiteral(std::string value);
 int		checkUnderOverflow(std::string value);
