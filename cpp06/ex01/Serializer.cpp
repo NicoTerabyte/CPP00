@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:23:48 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/05 16:57:48 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:07:47 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ uintptr_t Serializer::serialize(Data* ptr)
 {
 	uintptr_t	beta;
 
-	beta = (uintptr_t)((void*)ptr);
-	// beta = reinterpret_cast<uintptr_t>((void*)ptr);
+	// beta = (uintptr_t)((void*)ptr);
+	beta = reinterpret_cast<uintptr_t>((void*)ptr);
 	return (beta);
 }
 
@@ -50,7 +50,7 @@ Data* Serializer::deserialize(uintptr_t raw)
 
 	// dataInit(fantoccio);
 	// alpha = &fantoccio;
-	alpha = (Data*)raw;
+	alpha = reinterpret_cast<Data*>(raw);
 
 	return (alpha);
 }
