@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 18:33:20 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/19 15:02:14 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:59:48 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	Span::allInOne()
 	for (std::vector<int>::iterator ptr = begin; ptr != end; ++ptr)
 	{
 		addNumber(rand() % 100);
-		std::cout<<"daje "<<std::endl;
+		// std::cout<<"daje "<<std::endl;
 	}
 	this->array = copyClone;
 }

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:03:23 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/12 19:15:34 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:50:38 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 		easyV.push_back(5);
 		easyV.push_back(7);
 
-		easyfind<int>(easyV, 43);
+		easyfind<int>(easyV, 7);
 	}
 	catch(const std::exception& e)
 	{

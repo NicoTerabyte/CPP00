@@ -6,12 +6,18 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:45:39 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/19 14:40:30 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/03/19 20:19:22 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
+/*
+cose da fare per migliorare il codice:
+migliorare l'algoritmo shortestspan e longest
+che deve essere in grado di utilizzare metodi della libreria
+algorithm per semplificare e passare il check
+*/
 int	main(void)
 {
 	Span sp = Span(5);
