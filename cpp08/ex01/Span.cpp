@@ -6,11 +6,12 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 18:33:20 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/19 16:59:48 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:39:40 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <climits>
 
 Span::Span(unsigned int n) : N(n)//, array(n)
 {
@@ -49,24 +50,20 @@ void	Span::addNumber(int	number)
 
 int	Span::shortestSpan()
 {
-	int	shortest;
-	int	tmpShortest;
-	// int	actualNumber;
+	int	shortest = 2147483647;
 
-	if (this->array.size() <= 1)
+	if (this->array.size() < 2)
 		throw std::runtime_error("There are not enough elements (min 2) to calculate the shortest span");
-	for (int i = 0; i < static_cast<int>(this->array.size()); i++)
+	for (std::vector<int>::iterator it = array.begin(); it != array.end(); ++it)
 	{
-		for (int j = i + 1; j < static_cast<int>(this->array.size()); j++)
+		for (std::vector<int>::iterator jt = array.begin(); jt != array.end(); ++jt)
 		{
-			if (this->array[i] >= this->array[j])
-				tmpShortest = this->array[i] - this->array[j];
-			else
-				tmpShortest = this->array[j] - this->array[i];
-			if (i == 0)
-				shortest = tmpShortest;
-			else if (shortest > tmpShortest)
-				shortest = tmpShortest;
+			if (it != jt)
+			{
+				int currentDist = std::abs(*it - *jt);
+				if (currentDist < shortest)
+					shortest = currentDist;
+			}
 		}
 	}
 	return (shortest);
@@ -74,27 +71,14 @@ int	Span::shortestSpan()
 
 int	Span::longestSpan()
 {
-	int	longest;
-	int	tmpLongest;
-	// int	actualNumber;
 
-	if (this->array.size() <= 1)
+
+	if (this->array.size() < 2)
 		throw std::runtime_error("There are not enough elements (min 2) to calculate the shortest span");
-	for (int i = 0; i < static_cast<int>(this->array.size()); i++)
-	{
-		for (int j = i + 1; j < static_cast<int>(this->array.size()); j++)
-		{
-			if (this->array[i] > this->array[j])
-				tmpLongest = this->array[i] - this->array[j];
-			else
-				tmpLongest = this->array[j] - this->array[i];
-			if (i == 0)
-				longest = tmpLongest;
-			else if (longest < tmpLongest)
-				longest = tmpLongest;
-		}
-	}
-	return (longest);
+
+	std::vector<int>::iterator max = std::max_element(this->array.begin(), this->array.end());
+	std::vector<int>::iterator min = std::min_element(this->array.begin(), this->array.end());
+	return (*max - *min);
 }
 
 void	Span::allInOne()
