@@ -73,6 +73,13 @@
 		"__verbose_abort": "cpp",
 		"ios": "cpp",
 		"locale": "cpp",
-		"queue": "cpp"
+		"queue": "cpp",
+		"stack": "cpp",
+		"deque": "cpp",
+		"list": "cpp",
+		"__tree": "cpp",
+		"map": "cpp",
+		"set": "cpp",
+		"valarray": "cpp"
 	}
 }
