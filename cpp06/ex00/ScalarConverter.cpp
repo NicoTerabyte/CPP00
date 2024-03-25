@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:33:25 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/04 12:04:55 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:11:34 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ScalarConverter::convert(std::string value)
 
 	if ((printChar = halfLiteralsCheck(value)) && (halfLiteralsCheck(value) == 1))
 		printHalfLiteral(value);
-	else //impotetico check caratteri normali
+	else //ipotetico check caratteri normali
 	{
 		overflow = checkUnderOverflow(value);
 		std::stringstream converter(value);
