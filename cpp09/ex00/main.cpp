@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:32:36 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/27 18:29:29 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:02:21 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fillCsvMap(std::multimap<std::string, float> &csvFile)
 	std::getline(file, line);
 	if (!file.is_open())
 	{
-		std::cerr<<"Impossibile aprire il file "<<std::endl;
+		std::cerr<<"Error could not open file "<<std::endl;
 		return ;
 	}
 	while (std::getline(file, line))
@@ -37,31 +37,25 @@ void	fillCsvMap(std::multimap<std::string, float> &csvFile)
 		if (std::getline(reader, date, ',') && std::getline(reader, bitCoinValue, ','))
 		{
 			std::stringstream	converter(bitCoinValue);
-			std::cout<<"valore contenuto in bitcoin value "<<bitCoinValue<<std::endl;
 			converter >> coinValue;
 			csvFile.insert(std::make_pair(date, coinValue));
 		}
 	}
 	file.close();
-	for (std::multimap<std::string,float>::iterator	it = csvFile.begin();
-			it != csvFile.end(); ++it)
-	{
-		std::cout<<"Valore mappa "<<it->first<<" | "<<it->second<<std::endl;
-	}
 }
 
-void	fillUserMap(std::multimap<std::string, float> &userFile)
+void	fillUserMap(std::multimap<std::string, float> &userFile, char **argv)
 {
-	std::ifstream		file("data.csv");
+	std::ifstream		file(argv[1]);
 	std::string			line;
 	std::stringstream	reader;
-
 	float	coinValue;
-	file.open("testFile.txt");
+
 	std::getline(file, line);
+
 	if (!file.is_open())
 	{
-		std::cerr<<"Impossibile aprire il file "<<std::endl;
+		throw std::runtime_error("Error could not open file");
 	}
 	while (std::getline(file, line))
 	{
@@ -74,28 +68,40 @@ void	fillUserMap(std::multimap<std::string, float> &userFile)
 		{
 			std::stringstream	converter(bitCoinValue);
 			converter >> coinValue;
+			date.erase(date.size() - 1);
 			userFile.insert(std::make_pair(date, coinValue));
 		}
+		else
+			std::cout<<"Pair not valid "<<date<<std::endl;
 	}
 	file.close();
-	for (std::multimap<std::string,float>::iterator	it = userFile.begin();
-		it != userFile.end(); ++it)
-	{
-		std::cout<<"Valore mappa "<<it->first<<" | "<<it->second<<std::endl;
-	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	try
+	{
+		if (argc > 1)
+		{
+			std::multimap<std::string, float>	csvFile;
+			std::multimap<std::string, float>	userFile;
 
-	std::multimap<std::string, float>	csvFile;
-	std::multimap<std::string, float>	userFile;
+			fillCsvMap(csvFile);
+			fillUserMap(userFile, argv);
 
-	fillCsvMap(csvFile);
-	fillUserMap(userFile);
+			BitcoinExchange	test(userFile, csvFile);
 
-	BitcoinExchange	test(userFile, csvFile);
-
-	test.printContainers();
+			test.printCurrentValue();
+			// test.printContainers();
+		}
+		else
+		{
+			throw std::runtime_error("Error could not open file");
+		}
+	}
+	catch (std::exception& e)
+	{
+		std::cout<<e.what()<<std::endl;
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:21:20 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/27 18:23:41 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:51:16 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <iomanip>
 #include <fstream>
 #include <sstream>
-
+#include <exception>
 
 /*
 I'll use the multimap both for the csv database
@@ -50,6 +50,10 @@ class BitcoinExchange
 		BitcoinExchange&	operator=(const BitcoinExchange& obj);
 
 		void	printContainers();
+		bool	checkerDate(int year, int month, int day);
+		void	compareDateToFindValue(std::multimap<std::string, float>::iterator usrIt);
+		void	printCurrentValue();
+
 };
 
 #endif

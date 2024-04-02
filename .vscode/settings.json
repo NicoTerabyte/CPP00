@@ -81,6 +81,7 @@
 		"map": "cpp",
 		"set": "cpp",
 		"valarray": "cpp",
-		"complex": "cpp"
+		"complex": "cpp",
+		"semaphore": "cpp"
 	}
 }
