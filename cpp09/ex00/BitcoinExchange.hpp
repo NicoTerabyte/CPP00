@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:21:20 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/03 14:18:59 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:00:41 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ class BitcoinExchange
 {
 	private:
 		// std::multimap<std::string, float>	userFile;
-		std::list<std::string>	date;
-		std::list<float>		btCoinValue;
+		std::list<std::string>				date;
+		std::list<float>					btCoinValue;
 		std::multimap<std::string, float>	csvFile;
 
 	public:

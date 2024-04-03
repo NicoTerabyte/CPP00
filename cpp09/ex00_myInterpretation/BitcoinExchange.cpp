@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:14:08 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/02 17:04:36 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:50:10 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ Come implementerò le cose adesso:
 
 bool	BitcoinExchange::checkerDate(int year, int month, int day)
 {
-	std::cout<<"Here we are checking the dates "<<year<<" "<<month<<" "<<day<<std::endl;
 	if (year < 2009)
 		return	false;
 	if (month < 1 || month > 12)

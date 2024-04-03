@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:32:36 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/02 17:59:47 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:07:10 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	fillCsvMap(std::multimap<std::string, float> &csvFile)
 	file.close();
 }
 
-void	fillUserMap(std::multimap<std::string, float> &userFile, char **argv)
+void	fillUserMap(std::list<std::string> &unorderedDates, std::list<float> &unorderedValues, char **argv)
 {
 	std::ifstream		file(argv[1]);
 	std::string			line;
@@ -71,11 +71,14 @@ void	fillUserMap(std::multimap<std::string, float> &userFile, char **argv)
 				std::stringstream	converter(bitCoinValue);
 				converter >> coinValue;
 				date.erase(date.size() - 1);
-				std::cout<<"segnalino per capire"<<std::endl;
-				userFile.insert(std::make_pair(date, coinValue));
+				unorderedDates.push_back(date);
+				unorderedValues.push_back(coinValue);
 			}
 			else
-				userFile.insert(std::make_pair(date, 0));
+			{
+				unorderedDates.push_back(date);
+				unorderedValues.push_back(0);
+			}
 		}
 	}
 	file.close();
@@ -88,15 +91,17 @@ int	main(int argc, char **argv)
 		if (argc > 1)
 		{
 			std::multimap<std::string, float>	csvFile;
-			std::multimap<std::string, float>	userFile;
+			// std::multimap<std::string, float>	userFile;
+			std::list<std::string>				unorderedDates;
+			std::list<float>					unorderedValues;
 
 			fillCsvMap(csvFile);
-			fillUserMap(userFile, argv);
+			fillUserMap(unorderedDates, unorderedValues, argv);
 
-			BitcoinExchange	test(userFile, csvFile);
+			BitcoinExchange	test(unorderedDates, unorderedValues, csvFile);
 
-			test.printCurrentValue();
 			// test.printContainers();
+			test.printCurrentValue();
 		}
 		else
 		{

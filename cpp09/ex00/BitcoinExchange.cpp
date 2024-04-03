@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:14:08 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/03 14:21:53 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:52:38 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,12 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj)
 
 void	BitcoinExchange::printContainers()
 {
-	// std::multimap<std::string, float>::iterator	usIt;
-	// // std::multimap<std::string, float>::iterator	csvIt ;
+	std::list<std::string>::iterator it;
 
-	// std::cout<<"User file values"<<std::endl;
-	// for (usIt = this->userFile.begin(); usIt != this->userFile.end(); ++usIt)
-	// {
-	// 	std::cout<<usIt->first<<" | "<<usIt->second<<std::endl;
-	// }
-
-	// std::cout<<"Csv file values"<<std::endl;
-	// for (csvIt = this->csvFile.begin(); csvIt != this->csvFile.end(); ++csvIt)
-	// {
-	// 	std::cout<<csvIt->first<<" , "<<csvIt->second<<std::endl;
-	// }
+	for (it = this->date.begin(); it != this->date.end(); ++it)
+	{
+		std::cout<<"it value "<<*it<<std::endl;
+	}
 }
 
 /*
@@ -72,7 +64,6 @@ Come implementerò le cose adesso:
 
 bool	BitcoinExchange::checkerDate(int year, int month, int day)
 {
-	// std::cout<<"Here we are checking the dates "<<year<<" "<<month<<" "<<day<<std::endl;
 	if (year < 2009)
 		return	false;
 	if (month < 1 || month > 12)
@@ -110,10 +101,29 @@ void	BitcoinExchange::compareDateToFindValue(std::list<std::string>::iterator us
 	std::list<float>::iterator usrItValue, int year, int month, int day)
 {
 	std::multimap<std::string, float>::iterator csvIt;
+	std::multimap<std::string, float>::iterator	finder = this->csvFile.find(*usrIt);
 	if (checkerDate(year, month, day))
 	{
-
+		if (finder != this->csvFile.end())
+		{
+			std::cout<<*usrIt<<" => "<<*usrItValue<<" = "<<finder->second * *usrItValue<<std::endl;
+		}
+		else
+		{
+			finder = this->csvFile.lower_bound(*usrIt);
+			--finder;
+			if (finder != this->csvFile.begin())
+			{
+				std::cout<<*usrIt<<" => "<<*usrItValue<<" = "<<finder->second * *usrItValue<<std::endl;
+			}
+			else
+			{
+				std::cout<<"no data found"<<std::endl;
+			}
+		}
 	}
+	else
+		std::cout<<"Error bad input => "<<*usrIt<<std::endl;
 }
 
 void	BitcoinExchange::printCurrentValue()
@@ -124,14 +134,14 @@ void	BitcoinExchange::printCurrentValue()
 	char										sep;
 	int											year, month, day;
 
-	printContainers();
+
+	// printContainers();
 	for (it = this->date.begin(); it != this->date.end(); ++it)
 	{
-		++itVal;
 		ss.clear();
 		ss.str(*it);
 		ss >> year >> sep >> month >> sep >> day;
-		// std::cout<<"it honest reaction: "<<it->first<<std::endl;
+		// std::cout<<"it honest reaction: "<<*it<<std::endl;
 		// if (checkerDate(year, month, day))
 		if (*itVal >= 0 && *itVal <= 1000)
 		{
@@ -142,9 +152,13 @@ void	BitcoinExchange::printCurrentValue()
 		}
 		else
 		{
-			std::cout<<"Only positive numbers and they must be less or equal to 1000"<<std::endl;
+			if (*itVal >= 1000)
+				std::cout<<"Error: too large number"<<std::endl;
+			else
+				std::cout<<"Error: not a positive number"<<std::endl;
 		}
 		// else
 		// 	std::cout<<"Error bad input "<<it->first<<std::endl;
+		++itVal;
 	}
 }
