@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:21:20 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/03 14:18:59 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:51:16 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iterator>
 #include <map>
-#include <list>
 #include <algorithm>
 #include <iomanip>
 #include <fstream>
@@ -41,21 +40,18 @@ da fare:
 class BitcoinExchange
 {
 	private:
-		// std::multimap<std::string, float>	userFile;
-		std::list<std::string>	date;
-		std::list<float>		btCoinValue;
+		std::multimap<std::string, float>	userFile;
 		std::multimap<std::string, float>	csvFile;
 
 	public:
-		BitcoinExchange(std::list<std::string> date, std::list<float> btCoinValue, std::multimap<std::string, float> csvFile);
+		BitcoinExchange(std::multimap<std::string, float> userFile, std::multimap<std::string, float> csvFile);
 		~BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange& obj);
 		BitcoinExchange&	operator=(const BitcoinExchange& obj);
 
 		void	printContainers();
 		bool	checkerDate(int year, int month, int day);
-		void	compareDateToFindValue(std::list<std::string>::iterator usrIt,
-			std::list<float>::iterator usrItVal, int year, int month, int day);
+		void	compareDateToFindValue(std::multimap<std::string, float>::iterator usrIt);
 		void	printCurrentValue();
 
 };

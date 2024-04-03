@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:32:36 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/02 17:59:47 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:02:21 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,16 @@ void	fillUserMap(std::multimap<std::string, float> &userFile, char **argv)
 		reader.str(line);
 		std::string			date;
 		std::string			bitCoinValue;
-		//damn they are already ordered what can i do?
-		if (std::getline(reader, date, '|'))
+
+		if (std::getline(reader, date, '|') && std::getline(reader, bitCoinValue, '|'))
 		{
-			if (std::getline(reader, bitCoinValue, '|'))
-			{
-				std::stringstream	converter(bitCoinValue);
-				converter >> coinValue;
-				date.erase(date.size() - 1);
-				std::cout<<"segnalino per capire"<<std::endl;
-				userFile.insert(std::make_pair(date, coinValue));
-			}
-			else
-				userFile.insert(std::make_pair(date, 0));
+			std::stringstream	converter(bitCoinValue);
+			converter >> coinValue;
+			date.erase(date.size() - 1);
+			userFile.insert(std::make_pair(date, coinValue));
 		}
+		else
+			std::cout<<"Pair not valid "<<date<<std::endl;
 	}
 	file.close();
 }

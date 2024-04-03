@@ -6,17 +6,16 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:14:08 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/03 14:21:53 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:04:36 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(std::list<std::string> date, std::list<float> btCoinValue, std::multimap<std::string, float> csvFile)
+BitcoinExchange::BitcoinExchange(std::multimap<std::string, float> userFile, std::multimap<std::string, float> csvFile)
 {
 	std::cout<<"Default constructor called"<<std::endl;
-	this->date = date;
-	this->btCoinValue = btCoinValue;
+	this->userFile = userFile;
 	this->csvFile = csvFile;
 }
 
@@ -25,7 +24,7 @@ BitcoinExchange::~BitcoinExchange()
 	std::cout<<"Destructor called"<<std::endl;
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) : date(obj.date), btCoinValue(obj.btCoinValue), csvFile(obj.csvFile)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) : userFile(obj.userFile), csvFile(obj.csvFile)
 {
 	std::cout<<"Copy constructor called"<<std::endl;
 }
@@ -33,8 +32,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) : date(obj.date), b
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj)
 {
 	std::cout<<"Operator overloading called"<<std::endl;
-	this->date = obj.date;
-	this->btCoinValue = obj.btCoinValue;
+	this->userFile = obj.userFile;
 	this->csvFile = obj.csvFile;
 
 	return *this;
@@ -42,20 +40,20 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj)
 
 void	BitcoinExchange::printContainers()
 {
-	// std::multimap<std::string, float>::iterator	usIt;
-	// // std::multimap<std::string, float>::iterator	csvIt ;
+	std::multimap<std::string, float>::iterator	usIt;
+	std::multimap<std::string, float>::iterator	csvIt ;
 
-	// std::cout<<"User file values"<<std::endl;
-	// for (usIt = this->userFile.begin(); usIt != this->userFile.end(); ++usIt)
-	// {
-	// 	std::cout<<usIt->first<<" | "<<usIt->second<<std::endl;
-	// }
+	std::cout<<"User file values"<<std::endl;
+	for (usIt = this->userFile.begin(); usIt != this->userFile.end(); ++usIt)
+	{
+		std::cout<<usIt->first<<" | "<<usIt->second<<std::endl;
+	}
 
-	// std::cout<<"Csv file values"<<std::endl;
-	// for (csvIt = this->csvFile.begin(); csvIt != this->csvFile.end(); ++csvIt)
-	// {
-	// 	std::cout<<csvIt->first<<" , "<<csvIt->second<<std::endl;
-	// }
+	std::cout<<"Csv file values"<<std::endl;
+	for (csvIt = this->csvFile.begin(); csvIt != this->csvFile.end(); ++csvIt)
+	{
+		std::cout<<csvIt->first<<" , "<<csvIt->second<<std::endl;
+	}
 }
 
 /*
@@ -72,7 +70,7 @@ Come implementerò le cose adesso:
 
 bool	BitcoinExchange::checkerDate(int year, int month, int day)
 {
-	// std::cout<<"Here we are checking the dates "<<year<<" "<<month<<" "<<day<<std::endl;
+	std::cout<<"Here we are checking the dates "<<year<<" "<<month<<" "<<day<<std::endl;
 	if (year < 2009)
 		return	false;
 	if (month < 1 || month > 12)
@@ -106,45 +104,57 @@ bool	BitcoinExchange::checkerDate(int year, int month, int day)
 		il numero di btc per il valore
 */
 
-void	BitcoinExchange::compareDateToFindValue(std::list<std::string>::iterator usrIt,
-	std::list<float>::iterator usrItValue, int year, int month, int day)
+void	BitcoinExchange::compareDateToFindValue(std::multimap<std::string, float>::iterator usrIt)
 {
-	std::multimap<std::string, float>::iterator csvIt;
-	if (checkerDate(year, month, day))
-	{
+	std::multimap<std::string, float>::iterator	found  = this->csvFile.find(usrIt->first);
 
+	if (found == this->csvFile.end())
+	{
+		std::multimap<std::string, float>::iterator it = this->csvFile.lower_bound(usrIt->first);
+		if (it != this->csvFile.begin())
+		{
+			it--;
+			std::cout<<"Closest smaller data found "<<it->first<<std::endl;
+			std::cout<<"test calculation: "<<it->second * usrIt->second<<std::endl;
+		}
+		else
+			std::cout<<"No previous data found"<<std::endl;
+	}
+	else
+	{
+		std::cout<<"test calculation: "<<found->second * usrIt->second<<std::endl;
 	}
 }
 
 void	BitcoinExchange::printCurrentValue()
 {
-	std::list<std::string>::iterator			it;
-	std::list<float>::iterator					itVal = this->btCoinValue.begin();
+	std::multimap<std::string, float>::iterator	it;
 	std::stringstream							ss;
 	char										sep;
 	int											year, month, day;
 
-	printContainers();
-	for (it = this->date.begin(); it != this->date.end(); ++it)
+	for (it = this->userFile.begin(); it != this->userFile.end(); ++it)
 	{
-		++itVal;
 		ss.clear();
-		ss.str(*it);
+		ss.str(it->first);
 		ss >> year >> sep >> month >> sep >> day;
 		// std::cout<<"it honest reaction: "<<it->first<<std::endl;
-		// if (checkerDate(year, month, day))
-		if (*itVal >= 0 && *itVal <= 1000)
+		if (checkerDate(year, month, day))
 		{
-			//here we will call the function to
-			//Calculate how much the bitcoin values
-			//like we do a comparison of the dates to know the value of the bt
-			compareDateToFindValue(it, itVal, year, month, day);
+			if (it->second >= 0 && it->second <= 1000)
+			{
+				//here we will call the function to
+				//Calculate how much the bitcoin values
+				//like we do a comparison of the dates to know the value of the bt
+				compareDateToFindValue(it);
+			}
+			else
+			{
+				std::cout<<"Only positive numbers and they must be less or equal to 1000"<<std::endl;
+			}
+
 		}
 		else
-		{
-			std::cout<<"Only positive numbers and they must be less or equal to 1000"<<std::endl;
-		}
-		// else
-		// 	std::cout<<"Error bad input "<<it->first<<std::endl;
+			std::cout<<"Not a valid date"<<std::endl;
 	}
 }
