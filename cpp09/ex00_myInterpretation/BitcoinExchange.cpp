@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:14:08 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/03 15:50:10 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:15:34 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	BitcoinExchange::printCurrentValue()
 	{
 		ss.clear();
 		ss.str(it->first);
-		ss >> year >> sep >> month >> sep >> day;
+		ss >> year >> sep >> month >> sep >> day;	
 		// std::cout<<"it honest reaction: "<<it->first<<std::endl;
 		if (checkerDate(year, month, day))
 		{
