@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/07 19:39:27 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:48:55 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,62 @@ void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
 	}
 }
 
+
+//questo alla fine prima ordinare uno dei due vettori
+// void	binarySearchSortVec(std::vector<int>& biggest)
+// {
+
+// }
+void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest)
+{
+	std::vector<int>::iterator	it;
+
+	for (size_t i = 0; i < lowest.size(); i++)
+	{
+		biggest.insert(std::lower_bound(biggest.begin(), biggest.end(), lowest[i]), lowest[i]);
+	}
+
+	for (it = biggest.begin(); it != biggest.end(); it++)
+		std::cout<<*it<<std::endl;
+}
+
+void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int rejected)
+{
+	std::vector<int>	lowest;
+	std::vector<int>	biggest;
+	std::vector<std::pair<int, int> >::iterator	it;
+
+	for (it = vectorPairs.begin(); it != vectorPairs.end(); it++)
+	{
+		if (biggest.empty())
+		{
+			std::cout<<"Does it enter here?"<<std::endl;
+			biggest.push_back(it->second);
+		}
+		else
+		{
+			bool	inserted = false;
+
+			for (size_t i = 0; i < biggest.size(); i++)
+			{
+				if (it->second < biggest[i])
+				{
+					biggest.insert(biggest.begin() + i, it->second);
+					inserted = true;
+					break;
+				}
+			}
+			if (!inserted)
+				biggest.push_back(it->second);
+		}
+		lowest.push_back(it->first);
+	}
+	lowest.push_back(rejected);
+
+	//i sort the biggest sequence:
+	binarySearchSortVec(biggest, lowest);
+}
+
 void	PmergeMe::vectorMergeInsert()
 {
 	int		rejected;
@@ -84,13 +140,15 @@ void	PmergeMe::vectorMergeInsert()
 		pairs.push_back(tmpPair);
 	}
 	sortPairVectorVer(pairs);
-	printPairsVec(pairs);
+	dividePair(pairs, rejected);
+	// printPairsVec(pairs);
 	(void)rejected;
 }
 
 void	PmergeMe::dequeMergeInsert()
 {
 	int		rejected;
+
 
 	//if the deque is odd i save the last value
 	//and i pop it out of the deque
