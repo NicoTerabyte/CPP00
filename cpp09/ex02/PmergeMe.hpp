@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/08 17:21:09 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:40:01 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,20 @@ class PmergeMe
 		//optional functions for me
 		void	printCont();
 		void	printPairsVec(std::vector<std::pair<int, int> >& vectorPairs);
+		void	printPairsDeq(std::deque<std::pair<int, int> >& dequePairs);
 		//important functions for the ex
+		//vector manipulation
 		void	vectorMergeInsert();
-		void	dequeMergeInsert();
 		void	sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs);
-		void	dividePair(std::vector<std::pair<int, int> >& vectorPairs, int rejected);
+		void	dividePair(std::vector<std::pair<int, int> >& vectorPairs, int rejected, bool odd);
+
+		//deque algorithm
+		void	dequeMergeInsert();
+		// void
 };
 	// void	sortBigger(std::vector<int>& biggest);
 	void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest);
 
+	//EXPERIMENT
+	void	sortPairDequeVer(std::deque<std::pair<int, int> >& dequePairs);
 #endif

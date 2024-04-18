@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/08 17:48:55 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:34:13 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ void	PmergeMe::printPairsVec(std::vector<std::pair<int, int> >& vectorPairs)
 	}
 }
 
+void	PmergeMe::printPairsDeq(std::deque<std::pair<int, int> >& dequePairs)
+{
+	std::deque<std::pair<int, int> >::iterator	it;
+
+	for (it = dequePairs.begin(); it != dequePairs.end(); it++)
+	{
+		std::cout<<"("<<it->first<<", "<<it->second<<")"<<std::endl;
+	}
+}
+
 void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
 {
 	std::vector<std::pair<int, int> >::iterator	it;
@@ -70,9 +80,8 @@ void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
 
 //questo alla fine prima ordinare uno dei due vettori
 // void	binarySearchSortVec(std::vector<int>& biggest)
-// {
 
-// }
+
 void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest)
 {
 	std::vector<int>::iterator	it;
@@ -86,7 +95,7 @@ void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest)
 		std::cout<<*it<<std::endl;
 }
 
-void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int rejected)
+void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int rejected, bool odd)
 {
 	std::vector<int>	lowest;
 	std::vector<int>	biggest;
@@ -96,7 +105,6 @@ void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int re
 	{
 		if (biggest.empty())
 		{
-			std::cout<<"Does it enter here?"<<std::endl;
 			biggest.push_back(it->second);
 		}
 		else
@@ -117,7 +125,8 @@ void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int re
 		}
 		lowest.push_back(it->first);
 	}
-	lowest.push_back(rejected);
+	if (odd)
+		lowest.push_back(rejected);
 
 	//i sort the biggest sequence:
 	binarySearchSortVec(biggest, lowest);
@@ -126,11 +135,14 @@ void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int re
 void	PmergeMe::vectorMergeInsert()
 {
 	int		rejected;
+	bool	odd = false;
+
 	std::vector<std::pair<int, int> >	pairs;
 	//if the vector is odd i save the last value
 	//and i pop it out of the vector
 	if (vectorAlgorithm.size() % 2 != 0)
 	{
+		odd = true;
 		rejected = vectorAlgorithm.back();
 		vectorAlgorithm.pop_back();
 	}
@@ -140,22 +152,52 @@ void	PmergeMe::vectorMergeInsert()
 		pairs.push_back(tmpPair);
 	}
 	sortPairVectorVer(pairs);
-	dividePair(pairs, rejected);
-	// printPairsVec(pairs);
-	(void)rejected;
+	dividePair(pairs, rejected, odd);
 }
+
+
+/*deque merge insetion sort algorithm section*/
+
+void	sortPairDequeVer(std::deque<std::pair<int, int> >& dequePairs)
+{
+	std::deque<std::pair<int, int> >::iterator	it;
+	int											tmp = 0;
+
+	for (it = dequePairs.begin(); it != dequePairs.end(); it++)
+	{
+		if (it->first > it->second)
+		{
+			tmp = it->first;
+			it->first = it->second;
+			it->second = tmp;
+		}
+	}
+};
 
 void	PmergeMe::dequeMergeInsert()
 {
 	int		rejected;
-
-
+	bool	odd = false;
+	std::deque<int>::iterator	it;
+	std::deque<std::pair<int, int> >pairs;
 	//if the deque is odd i save the last value
 	//and i pop it out of the deque
+	std::cout<<"deque sorting beta deque size too "<<this->dequeAlgorithm.size()<<std::endl;
 	if (dequeAlgorithm.size() % 2 != 0)
 	{
+		odd = true;
 		rejected = dequeAlgorithm.back();
 		dequeAlgorithm.pop_back();
 	}
+	for (it = this->dequeAlgorithm.begin(); it != (this->dequeAlgorithm.end() - 1)
+	&& it != this->dequeAlgorithm.end()	; it+=2)
+	{
+		std::cout<<"valore it? "<<*it<<std::endl;
+		std::pair<int, int>	tmpPair(*it, *(it + 1));
+		pairs.push_back(tmpPair);
+	}
+	sortPairDequeVer(pairs);
+	printPairsDeq(pairs);
 	(void)rejected;
+	(void)odd;
 }
