@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/19 20:00:31 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/19 20:10:47 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
 //questo alla fine prima ordinare uno dei due vettori
 // void	binarySearchSortVec(std::vector<int>& biggest)
 
-
 void	PmergeMe::binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest)
 {
 	std::vector<int>::iterator	it;
@@ -92,9 +91,6 @@ void	PmergeMe::binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& 
 	{
 		biggest.insert(std::lower_bound(biggest.begin(), biggest.end(), lowest[i]), lowest[i]);
 	}
-
-	// for (it = biggest.begin(); it != biggest.end(); it++)
-	// 	std::cout<<*it<<std::endl;
 	this->vectorAlgorithm = biggest;
 }
 
@@ -130,10 +126,11 @@ void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int re
 	}
 	if (odd)
 		lowest.push_back(rejected);
-
-	//i sort the biggest sequence:
 	binarySearchSortVec(biggest, lowest);
 }
+
+//if the vector is odd i save the last value
+//and i pop it out of the vector
 
 void	PmergeMe::vectorMergeInsert()
 {
@@ -141,8 +138,6 @@ void	PmergeMe::vectorMergeInsert()
 	bool	odd = false;
 
 	std::vector<std::pair<int, int> >	pairs;
-	//if the vector is odd i save the last value
-	//and i pop it out of the vector
 	if (vectorAlgorithm.size() % 2 != 0)
 	{
 		odd = true;
@@ -185,8 +180,6 @@ void	PmergeMe::binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lo
 	{
 		biggest.insert(std::lower_bound(biggest.begin(), biggest.end(), lowest[i]), lowest[i]);
 	}
-	// for (it = biggest.begin(); it != biggest.end(); it++)
-	// 	std::cout<<*it<<std::endl;
 	this->dequeAlgorithm = biggest;
 }
 
@@ -225,14 +218,16 @@ void	PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 	binarySearchSortDeq(biggest, lowest);
 }
 
+//if the deque is odd i save the last value
+//and i pop it out of the deque;
+
 void	PmergeMe::dequeMergeInsert()
 {
 	int		rejected;
 	bool	odd = false;
+
 	std::deque<int>::iterator	it;
 	std::deque<std::pair<int, int> >pairs;
-	//if the deque is odd i save the last value
-	//and i pop it out of the deque;
 	std::cout<<"deque sorting beta deque size too "<<this->dequeAlgorithm.size()<<std::endl;
 	if (dequeAlgorithm.size() % 2 != 0)
 	{
