@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:06:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/18 17:24:13 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:57:01 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ int	main(int ac, char **av)
 		}
 		PmergeMe	fordJohnson(dequeCont, vectorCont);
 		//from here i will start doing the fordJohnson
-		// fordJohnson.vectorMergeInsert();
-		// fordJohnson.printCont();
+		fordJohnson.vectorMergeInsert();
 		fordJohnson.dequeMergeInsert();
+		//i need to fill the original containers up after be sure they all work
+		fordJohnson.printCont();
 	}
 	else
 		std::cout<<"Error, put at least one argument"<<std::endl;

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/18 17:40:01 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:53:56 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ class PmergeMe
 
 		//deque algorithm
 		void	dequeMergeInsert();
-		// void
+		void	phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rejected, bool odd);
+		void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest);
+		void	binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lowest);
 };
-	// void	sortBigger(std::vector<int>& biggest);
-	void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest);
-
 	//EXPERIMENT
 	void	sortPairDequeVer(std::deque<std::pair<int, int> >& dequePairs);
+
 #endif
