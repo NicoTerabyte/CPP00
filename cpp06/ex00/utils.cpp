@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:22:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/04 12:05:22 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:46:00 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	printConv(int doNotPrintChar, int printChar, char cArgv)
 {
+	std::cout<<doNotPrintChar<<std::endl;
 	//nota per la prossima volta
 	/*
 	modificare il valore booleano in  int così definisci i valori che sono effettivamente
@@ -21,9 +22,9 @@ void	printConv(int doNotPrintChar, int printChar, char cArgv)
 	*/
 	if ((printChar == 2) || (!doNotPrintChar && ScalarConverter::conInt <= 127))
 	{
-		if (printChar == 2)
-			std::cout<<"char: '"<<cArgv<<"'"<<std::endl;
-		else if (std::isprint(ScalarConverter::conInt))
+		// if (printChar == 2)
+		// 	std::cout<<"char: '"<<cArgv<<"'"<<std::endl;
+		if (std::isprint(ScalarConverter::conInt))
 			std::cout<<"char: '"<<ScalarConverter::conChar<<"'"<<std::endl;
 		else
 			std::cout<<"char: Non displayable"<<std::endl;
@@ -54,6 +55,7 @@ void	printConv(int doNotPrintChar, int printChar, char cArgv)
 		std::cout<<std::fixed<<std::setprecision(1)<<"float: "<<ScalarConverter::conFloat<<"f"<<std::endl;
 		std::cout<<"double: "<<ScalarConverter::conDouble<<std::endl;
 	}
+	(void)cArgv;
 }
 
 int	halfLiteralsCheck(std::string argv)
@@ -62,7 +64,7 @@ int	halfLiteralsCheck(std::string argv)
 	|| !argv.compare("+nan") || !argv.compare("inf")
 	|| !argv.compare("-inf") || !argv.compare("+inf"))
 		return (1);
-	else if (argv.size() == 1)
+	else if (argv.length() == 1)
 	{
 		std::cout<<"is printable though"<<std::endl;
 		return (2);
