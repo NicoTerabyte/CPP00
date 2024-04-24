@@ -6,11 +6,12 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/19 20:10:47 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/20 19:08:47 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+/*----costrucotrs, orthodoxical part----*/
 
 PmergeMe::PmergeMe(std::deque<int>dequeAlgorithm, std::vector<int>vectorAlgorithm) :
 	dequeAlgorithm(dequeAlgorithm), vectorAlgorithm(vectorAlgorithm)
@@ -31,7 +32,9 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& obj)
 	return *this;
 }
 
+/*----costructor orthodoxical part end----*/
 
+/*----Optional functions just for me part----*/
 void	PmergeMe::printCont()
 {
 	std::deque<int>::iterator	it;
@@ -62,7 +65,9 @@ void	PmergeMe::printPairsDeq(std::deque<std::pair<int, int> >& dequePairs)
 		std::cout<<"("<<it->first<<", "<<it->second<<")"<<std::endl;
 	}
 }
+/*----Optional functions just for me PART END----*/
 
+/*----Vector Algorithm part----*/
 void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
 {
 	std::vector<std::pair<int, int> >::iterator	it;
@@ -132,12 +137,14 @@ void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int re
 //if the vector is odd i save the last value
 //and i pop it out of the vector
 
-void	PmergeMe::vectorMergeInsert()
+double	PmergeMe::vectorMergeInsert()
 {
+	clock_t	start, end;
 	int		rejected;
 	bool	odd = false;
-
 	std::vector<std::pair<int, int> >	pairs;
+
+	start = clock();
 	if (vectorAlgorithm.size() % 2 != 0)
 	{
 		odd = true;
@@ -151,10 +158,13 @@ void	PmergeMe::vectorMergeInsert()
 	}
 	sortPairVectorVer(pairs);
 	dividePair(pairs, rejected, odd);
+	end = clock();
+	double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
+	return (elapsed_time);
 }
+/*----Vector Algorithm part----*/
 
-
-/*deque merge insetion sort algorithm section*/
+/*----deque merge insertion sort algorithm section----*/
 
 void	sortPairDequeVer(std::deque<std::pair<int, int> >& dequePairs)
 {
@@ -221,14 +231,15 @@ void	PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 //if the deque is odd i save the last value
 //and i pop it out of the deque;
 
-void	PmergeMe::dequeMergeInsert()
+double	PmergeMe::dequeMergeInsert()
 {
+	clock_t start, end;
 	int		rejected;
 	bool	odd = false;
-
 	std::deque<int>::iterator	it;
 	std::deque<std::pair<int, int> >pairs;
-	std::cout<<"deque sorting beta deque size too "<<this->dequeAlgorithm.size()<<std::endl;
+
+	start = clock();
 	if (dequeAlgorithm.size() % 2 != 0)
 	{
 		odd = true;
@@ -242,4 +253,42 @@ void	PmergeMe::dequeMergeInsert()
 		pairs.push_back(tmpPair);
 	}
 	phase2Deque(pairs, rejected, odd);
+	end = clock();
+
+	double	elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
+	return (elapsed_time);
 }
+/*----deque merge insertion sort algorithm section end----*/
+
+/*----Output requested section part----*/
+
+/*this part could be put away becasue it doesn't seem good enough*/
+// void	printOut(PmergeMe containers, std::string argv)
+// {
+// 	struct timeval	start, end;
+// 	std::cout<<"Before";
+// 	for (int i = 1; i < argv.size(); i++)
+// 		std::cout<<argv[i];
+// 	std::cout<<""<<std::endl;
+// 	std::cout<<"After";
+// }
+
+
+void	PmergeMe::mergeInsertionSort(char** argv, int ac)
+{
+	double	vecDiff, deqDiff;
+
+	std::cout<<"Before:  ";
+	for (size_t i = 1; argv[i]; i++)
+		std::cout<<argv[i]<<" ";
+	std::cout<<""<<std::endl;
+	std::cout<<"After:  ";
+	vecDiff = vectorMergeInsert();
+	deqDiff = dequeMergeInsert();
+	for (size_t i = 0; i < vectorAlgorithm.size(); i++)
+		std::cout<<vectorAlgorithm[i]<<" ";
+	std::cout<<""<<std::endl;
+	std::cout<<"Time to process a range of "<<ac<<" elements with std::vector : "<<std::fixed << std::showpoint << std::setprecision(5)<<vecDiff / 100<<" us"<<std::endl;
+	std::cout<<"Time to process a range of"<<ac<<" elements with std::deque : "<<std::fixed << std::showpoint << std::setprecision(5)<<deqDiff / 100<<" us"<<std::endl;
+}
+/*----Output requested section part end----*/

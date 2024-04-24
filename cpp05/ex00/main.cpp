@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:52 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/19 22:49:09 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:39:08 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	main(void)
 		Bureaucrat evil("spino", 150);
 		Bureaucrat roughneck("punto", 150);
 
-		// roughneck.decrementGrade();
-		// primo.incrementGrade();
 		std::cout<<primo;
 		std::cout<<base;
 	}

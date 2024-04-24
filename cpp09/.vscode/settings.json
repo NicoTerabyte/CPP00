@@ -75,6 +75,8 @@
 		"__verbose_abort": "cpp",
 		"ios": "cpp",
 		"locale": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"charconv": "cpp",
+		"queue": "cpp"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/19 19:53:56 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/20 19:06:45 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ allora suddividendolo in step manca da fare:
 #include <sys/time.h>
 #include <algorithm>
 #include <utility>
+#include <iomanip>
+#include <ctime>
 
 class PmergeMe
 {
@@ -64,18 +66,20 @@ class PmergeMe
 		void	printPairsVec(std::vector<std::pair<int, int> >& vectorPairs);
 		void	printPairsDeq(std::deque<std::pair<int, int> >& dequePairs);
 		//important functions for the ex
+		void	mergeInsertionSort(char** argv, int ac);
 		//vector manipulation
-		void	vectorMergeInsert();
+		double	vectorMergeInsert();
 		void	sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs);
-		void	dividePair(std::vector<std::pair<int, int> >& vectorPairs, int rejected, bool odd);
-
-		//deque algorithm
-		void	dequeMergeInsert();
-		void	phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rejected, bool odd);
 		void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest);
+		void	dividePair(std::vector<std::pair<int, int> >& vectorPairs, int rejected, bool odd);
+		//deque algorithm
+		double	dequeMergeInsert();
+		void	phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rejected, bool odd);
 		void	binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lowest);
 };
 	//EXPERIMENT
 	void	sortPairDequeVer(std::deque<std::pair<int, int> >& dequePairs);
+	//output manipulation
+	// void	printOut(PmergeMe containers, std::string argv);
 
 #endif
