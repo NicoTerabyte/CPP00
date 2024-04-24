@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:33:25 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/24 17:11:34 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:06:39 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,23 @@ void	ScalarConverter::convert(std::string value)
 
 	if ((printChar = halfLiteralsCheck(value)) && (halfLiteralsCheck(value) == 1))
 		printHalfLiteral(value);
+	if (printChar != 0)
+	{
+		std::stringstream converter(value);
+		converter >> ScalarConverter::conChar;
+		if (ScalarConverter::conChar >= '0' && ScalarConverter::conChar <= '9')
+		{
+			ScalarConverter::conDouble = static_cast<double>(ScalarConverter::conChar - 48);
+			ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
+			ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
+		}
+		else
+		{
+			ScalarConverter::conDouble = static_cast<double>(ScalarConverter::conChar);
+			ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
+			ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
+		}
+	}
 	else //ipotetico check caratteri normali
 	{
 		overflow = checkUnderOverflow(value);
@@ -49,6 +66,6 @@ void	ScalarConverter::convert(std::string value)
 		ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
 		ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
 		ScalarConverter::conChar = static_cast<char>(ScalarConverter::conInt);
-		printConv(overflow, printChar, value[0]);
 	}
+	printConv(overflow, printChar, value[0]);
 }

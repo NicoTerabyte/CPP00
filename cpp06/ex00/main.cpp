@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:55:41 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/03 20:04:13 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:01:04 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ int	main(int argc, char **argv)
 		/*code for the number convertion*/
 		ScalarConverter::convert(static_cast<std::string>(argv[1]));
 	}
+	else
+		std::cout<<"Too many arguments"<<std::endl;
 	return (0);
 }

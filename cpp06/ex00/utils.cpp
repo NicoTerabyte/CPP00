@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:22:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/04 12:05:22 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:00:39 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	halfLiteralsCheck(std::string argv)
 		return (1);
 	else if (argv.size() == 1)
 	{
-		std::cout<<"is printable though"<<std::endl;
 		return (2);
 	}
 	return (0);
