@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:17:25 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/06 09:37:58 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:12:58 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,3 +115,5 @@ void identify(Base& p)
 
 	}
 }
+
+/* i need to remember what the dynamic cast does*/
