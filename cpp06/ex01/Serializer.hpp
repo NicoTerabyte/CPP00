@@ -6,13 +6,14 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:44:45 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/04 19:54:24 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:45:41 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
 #define SERIALIZER_HPP
 
+#include <iostream>
 #include "utils.h"
 #include <stdint.h>
 
