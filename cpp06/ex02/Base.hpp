@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:15:47 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/06 09:34:23 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:47:24 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ class C : public Base
 		virtual ~C();
 };
 
-		Base *	generate(void);
-		void	identify(Base* p);
-		void	identify(Base& p);
+Base *	generate(void);
+void	identify(Base* p);
+void	identify(Base& p);
 #endif
 

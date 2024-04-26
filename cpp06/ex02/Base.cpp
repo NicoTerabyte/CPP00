@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:17:25 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/24 20:12:58 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:39:03 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ Base * generate(void)
 	return (guessWho);
 }
 
+// delete checker1;
+// delete checker2;
+
 void identify(Base* p)
 {
 	A*	checker1;
@@ -79,8 +82,6 @@ void identify(Base* p)
 	else
 		std::cout<<"Type C"<<std::endl;
 
-	delete checker1;
-	delete checker2;
 }
 
 void identify(Base& p)
