@@ -6,7 +6,7 @@
 #    By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 10:43:41 by lnicoter          #+#    #+#              #
-#    Updated: 2024/02/28 11:13:16 by lnicoter         ###   ########.fr        #
+#    Updated: 2024/04/28 17:48:49 by lnicoter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,6 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf "home_shruberry"
+	rm -rf *"_shruberry"
 
 re: fclean all

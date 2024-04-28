@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:43:43 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/26 20:02:05 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/26 22:09:01 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define INTERN_HPP
 
 #include "median.hpp"
+#include "ShruberryCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidetialPardonForm.hpp"
 
 class Intern
 {

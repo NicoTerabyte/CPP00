@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:24:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/29 15:46:49 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:47:41 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade): name(name), grade(gr
 		throw GradeTooLowException();
 	else if (grade < 1)
 		throw GradeTooHighException();
-	std::cout<<"Burocrat assigned"<<std::endl;
+	std::cout<<"bureaucrat assigned"<<std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout<<"Burocrat Espelled"<<std::endl;
+	std::cout<<"bureaucrat Espelled"<<std::endl;
 }
 
 int Bureaucrat::getGrade(void) const
@@ -50,7 +50,7 @@ const std::string Bureaucrat::getName(void) const
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj):name(obj.getName()), grade(obj.getGrade())
 {
-	std::cout<<"A copy of the burocrat has been done"<<std::endl;
+	std::cout<<"A copy of the bureaucrat has been done"<<std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
@@ -62,7 +62,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
 {
-	os <<obj.getName()<<" Burocrat grade "<<obj.getGrade()<<std::endl;
+	os <<obj.getName()<<" bureaucrat grade "<<obj.getGrade()<<std::endl;
 	return os;
 }
 
@@ -93,7 +93,7 @@ void	Bureaucrat::signForm(AForm& obj)
 	try
 	{
 		obj.beSigned(*this);
-		std::cout<<*this<<" signed "<<obj.getName()<<std::endl;
+		std::cout<<*this<<"signed "<<obj.getName()<<std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -107,7 +107,7 @@ void	Bureaucrat::executeForm(const AForm& form)
 	try
 	{
 		form.execute(*this);
-		std::cout<<*this<<" executed "<<form<<std::endl;
+		std::cout<<*this<<"executed "<<form<<std::endl;
 	}
 	catch(const std::exception& e)
 	{

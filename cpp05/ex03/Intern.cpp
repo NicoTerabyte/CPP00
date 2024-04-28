@@ -6,14 +6,12 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:55:36 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/26 21:57:21 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:38:35 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
-#include "ShruberryCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidetialPardonForm.hpp"
+
 
 Intern::Intern()
 {
@@ -42,7 +40,7 @@ AForm*	Intern::makeForm(std::string formType, std::string formName)
 {
 	AForm	*test = 0;
 
-	if (formType != "shruberry creation" && formType != "robotomy request" && formType != "presidential pardon form" )
+	if (formType.compare("shruberry request") != 0 && formType.compare("robotomy request") && formType.compare("presidential request") )
 	{
 		throw std::runtime_error("This kind of form doesn't exist\n");
 	}

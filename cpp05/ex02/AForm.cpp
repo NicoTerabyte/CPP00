@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:13:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/29 14:59:20 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:44:27 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ AForm& AForm::operator=(const AForm& obj)
 
 std::ostream& operator<<(std::ostream& os, const AForm& obj)
 {
-	os<<obj.getName()<<" Is AForm name "<<obj.getGradeToSign()<<" grade required to sign it "
-	<<obj.getGradetoExecute()<<" grade required to execute it "<<obj.getSign()<<" it is signed?"<<std::endl;
+	os<<obj.getName()<<" Is AForm name\n"<<obj.getGradeToSign()<<" is the grade required to sign it\n"
+	<<obj.getGradetoExecute()<<" is the grade required to execute it\n"<<obj.getSign()<<" (0 not signed 1 signed)"<<std::endl;
 	return os;
 }
 

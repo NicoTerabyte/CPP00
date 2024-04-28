@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:24:13 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/02/19 22:24:13 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:47:41 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "Error, the grade is too low.";
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), grade(grade)
+Bureaucrat::Bureaucrat(const std::string& name, int grade): name(name), grade(grade)
 {
 
 	if (grade > 150)
 		throw GradeTooLowException();
 	else if (grade < 1)
 		throw GradeTooHighException();
-	std::cout<<"Burocrat assigned"<<std::endl;
+	std::cout<<"bureaucrat assigned"<<std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout<<"Burocrat Espelled"<<std::endl;
+	std::cout<<"bureaucrat Espelled"<<std::endl;
 }
 
 int Bureaucrat::getGrade(void) const
@@ -50,18 +50,19 @@ const std::string Bureaucrat::getName(void) const
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj):name(obj.getName()), grade(obj.getGrade())
 {
-	std::cout<<"A copy of the burocrat has been done"<<std::endl;
+	std::cout<<"A copy of the bureaucrat has been done"<<std::endl;
 }
 
-const Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 {
-	this->grade = obj.getGrade();
-	return obj;
+	if (this != &obj)
+		this->grade = obj.getGrade();
+	return *this;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
 {
-	os <<obj.getName()<<"Burocrat grade"<<obj.getGrade()<<std::endl;
+	os <<obj.getName()<<" bureaucrat grade "<<obj.getGrade()<<std::endl;
 	return os;
 }
 
@@ -85,4 +86,33 @@ void Bureaucrat::decrementGrade()
 	this->grade += 1;
 	if (this->grade > 150)
 		throw GradeTooLowException();
+}
+
+void	Bureaucrat::signForm(AForm& obj)
+{
+	try
+	{
+		obj.beSigned(*this);
+		std::cout<<*this<<"signed "<<obj.getName()<<std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout<<*this<<" couldn't sign "<<obj<<" because "<<e.what()<<std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(const AForm& form)
+{
+	std::cout<<"Let me see if i can execute this form"<<std::endl;
+	try
+	{
+		form.execute(*this);
+		std::cout<<*this<<"executed "<<form<<std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout <<*this<< " couldn't execute "<<form<<std::endl;
+		std::cout<<"because "<<e.what()<<std::endl;
+	}
+
 }
