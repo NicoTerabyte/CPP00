@@ -6,14 +6,12 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:33:25 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/24 20:06:39 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:03:58 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-// ScalarConverter::ScalarConverter()
-// {}
 char	ScalarConverter::conChar;
 int		ScalarConverter::conInt;
 float	ScalarConverter::conFloat;

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:22:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/24 20:00:39 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:04:42 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	printConv(int doNotPrintChar, int printChar, char cArgv)
 {
-	//nota per la prossima volta
-	/*
-	modificare il valore booleano in  int così definisci i valori che sono effettivamente
-	in overflow e fai l'exception necessaria
-	*/
 	if ((printChar == 2) || (!doNotPrintChar && ScalarConverter::conInt <= 127))
 	{
 		if (printChar == 2)
@@ -77,14 +72,15 @@ void	printHalfLiteral(std::string value)
 	std::cout<<"double: "<<value<<std::endl;
 }
 
+// Restores the stream clear
+
 int	checkUnderOverflow(std::string value)
 {
-	//fallo con i valori statici !!!
 	std::stringstream converter(value);
 	converter >> ScalarConverter::conDouble;
 	if (!converter)
 		return (3);
-	converter.clear(); // Ripristina lo stato dello stream
+	converter.clear();
 	converter.seekg(0);
 	converter >> ScalarConverter::conFloat;
 	if (!converter)
@@ -97,12 +93,3 @@ int	checkUnderOverflow(std::string value)
 	return (0);
 }
 
-/*
-    sConv >> convD; // Conversione corretta in double
-    sConv.clear(); // Ripristina lo stato dello stream
-    sConv.seekg(0); // Riporta il puntatore all'inizio della stringa
-    sConv >> convF; // Conversione in float
-    sConv.clear(); // Ripristina lo stato dello stream
-    sConv.seekg(0); // Riporta il puntatore all'inizio della stringa
-    sConv >> convInt; // Conversione in int
-*/
