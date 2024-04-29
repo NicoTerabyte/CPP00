@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:48:26 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/11 17:16:30 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:36:14 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void)
 {
 	int	size = 20;
 	int	chunck[size];
-	std::string	base = "generic";
+	std::string base = "generic";
 	for (int i = 0; i < size; i++)
 		chunck[i] = i + 1;
 	//per le funzioni devi per forza specificare

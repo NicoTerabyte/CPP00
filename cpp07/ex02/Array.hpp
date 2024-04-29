@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:08:47 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/12 17:40:41 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:52:29 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ template <typename T>
 Array<T>::Array()
 {
 	std::cout<<"Basic array constructor called"<<std::endl;
-	elementArr = new T[];
-	sizeA= 1;
+	elementArr = new T[0];
+	sizeA = 0;
 }
 
 template <typename T>
@@ -96,7 +96,7 @@ Array<T>& Array<T>::operator=(const Array& obj)
 
 /*
 faccio l'overloading dell'operatore delle []
-cosìcché io nel main possa stampare i valrori del mio array senza dover
+cosìcché io nel main possa stampare i valori del mio array senza dover
 per forza utilizzare dei metodi per stampare singolarmente
 i valori dell'attributo elementArr
 */
