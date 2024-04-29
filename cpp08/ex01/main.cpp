@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:45:39 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/20 14:02:31 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:38:45 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ int	main(void)
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
-	Span testIt(10);
+	Span testIt(10000);
 
 	testIt.allInOne();
+	std::cout<< testIt.shortestSpan()<<std::endl;
 	return (0);
 }

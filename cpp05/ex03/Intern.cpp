@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:55:36 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/28 17:38:35 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:10:12 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Intern::Intern()
 
 Intern::~Intern()
 {
-	std::cout<<"Destructor called"<<std::endl;
+	std::cout<<"Intern Destructor called"<<std::endl;
 }
 
 Intern::Intern(const Intern& obj)

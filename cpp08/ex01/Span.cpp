@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 18:33:20 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/24 16:11:59 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:37:25 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 Span::Span(unsigned int n) : N(n)//, array(n)
 {
+	
 	std::cout<<"Constructor called"<<std::endl;
 }
 
