@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:33:25 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/29 16:18:01 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:14:42 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,53 @@ void	ScalarConverter::convert(std::string value)
 	int	overflow = 0;
 	int	printChar = 0;
 
-	if ((printChar = halfLiteralsCheck(value)) && (halfLiteralsCheck(value) == 1))
-		printHalfLiteral(value);
-	else if (printChar != 0)
+	std::cout<<"what's the value '"<<value<<"'"<<std::endl;
+	if (value[0] == ' ' && value.size() == 1)
 	{
-		std::stringstream converter(value);
-		converter >> ScalarConverter::conChar;
-		if (ScalarConverter::conChar >= '0' && ScalarConverter::conChar <= '9')
-		{
-			ScalarConverter::conDouble = static_cast<double>(ScalarConverter::conChar - 48);
-			ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
-			ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
-		}
-		else
-		{
-			ScalarConverter::conDouble = static_cast<double>(ScalarConverter::conChar);
-			ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
-			ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
-		}
-		printConv(overflow, printChar, value[0]);
+		std::cout<<"char: ' '"<<std::endl;
+		std::cout<<"int: 32"<<std::endl;
+		std::cout<<"float: 32.0f"<<std::endl;
+		std::cout<<"double: 32.0"<<std::endl;
 	}
-	else if (printChar != 1)//hypothetic check for normal chars
+	else
 	{
-		overflow = checkUnderOverflow(value);
 		std::stringstream converter(value);
 		converter >> ScalarConverter::conDouble;
-		ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
-		ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
-		ScalarConverter::conChar = static_cast<char>(ScalarConverter::conInt);
-		printConv(overflow, printChar, value[0]);
+		if ((printChar = halfLiteralsCheck(value)) && (halfLiteralsCheck(value) == 1))
+			printHalfLiteral(value);
+		else if (printChar != 0 && ScalarConverter::conDouble != 0)
+		{
+			std::stringstream converter(value);
+			converter >> ScalarConverter::conChar;
+			if (ScalarConverter::conChar >= '0' && ScalarConverter::conChar <= '9')
+			{
+				ScalarConverter::conDouble = static_cast<double>(ScalarConverter::conChar - 48);
+				ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
+				ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
+			}
+			else if (ScalarConverter::conChar != 0)
+			{
+				ScalarConverter::conDouble = static_cast<double>(ScalarConverter::conChar);
+				ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
+				ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
+			}
+			else
+			{
+				ScalarConverter::conDouble = static_cast<double>(ScalarConverter::conChar) + 32;
+				ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
+				ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
+			}
+			printConv(overflow, printChar, value[0]);
+		}
+		else //hypothetic check for normal chars
+		{
+			overflow = checkUnderOverflow(value);
+			std::stringstream converter(value);
+			converter >> ScalarConverter::conDouble;
+			ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
+			ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
+			ScalarConverter::conChar = static_cast<char>(ScalarConverter::conInt);
+			printConv(overflow, printChar, value[0]);
+		}
 	}
 }
