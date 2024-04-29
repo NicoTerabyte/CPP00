@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:17:25 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/26 15:39:03 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:49:40 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ Base * generate(void)
 	int		picker;
 	Base	*guessWho;
 
-	srand(static_cast<unsigned int>(time(NULL)));
+	srand((time(NULL)));
 
 	picker = (rand() % 3) + 1;
 	if (picker == 1)

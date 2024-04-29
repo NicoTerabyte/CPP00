@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:33:25 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/28 19:03:58 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:18:01 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ScalarConverter::convert(std::string value)
 
 	if ((printChar = halfLiteralsCheck(value)) && (halfLiteralsCheck(value) == 1))
 		printHalfLiteral(value);
-	if (printChar != 0)
+	else if (printChar != 0)
 	{
 		std::stringstream converter(value);
 		converter >> ScalarConverter::conChar;
@@ -55,8 +55,9 @@ void	ScalarConverter::convert(std::string value)
 			ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
 			ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
 		}
+		printConv(overflow, printChar, value[0]);
 	}
-	else //ipotetico check caratteri normali
+	else if (printChar != 1)//hypothetic check for normal chars
 	{
 		overflow = checkUnderOverflow(value);
 		std::stringstream converter(value);
@@ -64,6 +65,6 @@ void	ScalarConverter::convert(std::string value)
 		ScalarConverter::conFloat = static_cast<float>(ScalarConverter::conDouble);
 		ScalarConverter::conInt = static_cast<int>(ScalarConverter::conDouble);
 		ScalarConverter::conChar = static_cast<char>(ScalarConverter::conInt);
+		printConv(overflow, printChar, value[0]);
 	}
-	printConv(overflow, printChar, value[0]);
 }
