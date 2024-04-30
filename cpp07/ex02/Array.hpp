@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:08:47 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/29 18:52:29 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:55:49 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#include <cstdlib> // Per la funzione rand() e srand()
+#include <ctime>
 /*
 possibile che debbano esserci
 più funzioni per i costruttori?
@@ -32,7 +34,7 @@ class Array
 		Array();
 		Array(unsigned int n);
 		~Array();
-		Array(const Array& obj);
+		Array(Array& obj);
 		Array& operator=(const Array& obj);
 		unsigned int	size();
 		T&	operator[](size_t idx);
@@ -68,13 +70,13 @@ unsigned int Array<T>::size()
 }
 
 template <typename T>
-Array<T>::Array(const Array& obj)
+Array<T>::Array(Array& obj)
 {
 	if (this == &obj)
 		return ;
-	this->size = obj.size();
-	this->elementArr = new T[this->size];
-	for (int i = 0; i < this->size; i++)
+	this->sizeA = obj.size();
+	this->elementArr = new T[this->sizeA];
+	for (unsigned int i = 0; i < this->sizeA; i++)
 	{
 		this->elementArr[i] = obj.elementArr[i];
 	}
@@ -85,9 +87,9 @@ Array<T>& Array<T>::operator=(const Array& obj)
 {
 	if (this == &obj)
 		return *this;
-	this->size = obj.size();
-	this->elementArr = new T[this->size];
-	for (int i = 0; i < this->size; i++)
+	this->sizeA = obj.size();
+	this->elementArr = new T[this->sizeA];
+	for (int i = 0; i < this->sizeA; i++)
 	{
 		this->elementArr[i] = obj.elementArr[i];
 	}
