@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:22:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/29 22:58:52 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:59:14 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	printConv(int doNotPrintChar, int printChar, char cArgv)
 {
-	if ((printChar == 2) || (!doNotPrintChar && ScalarConverter::conInt <= 127))
+	if ((printChar == 2) || (!doNotPrintChar && (ScalarConverter::conInt <= 127 && ScalarConverter::conInt >= 32)))
 	{
 		if (printChar == 2 && std::isprint(ScalarConverter::conInt))
 			std::cout<<"char: '"<<cArgv<<"'"<<std::endl;
