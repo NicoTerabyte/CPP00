@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/11 16:06:40 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:23:35 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ void	call(T arrayValue)
 }
 
 /*
-cioè assurdo, io posso trasformare le funzioni in template
-e chiamarle così e se una funzione corrisponde al numero
-di argomenti che ho passato e nel main io quando chiamo iter
-gli passo come argomento la funzione call così il template si adatta da solo
+is amazing i can transform the functions in templates
+and then call them just like that, and if a function corresponds
+at the number of arguments that i have passed, and i the main
+when i call iter i'm passing as an argument the function call so the template
+will automatically adapt
+
 */
 #endif

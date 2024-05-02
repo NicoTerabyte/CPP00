@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:08:47 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/30 17:55:49 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:48:07 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ Array<T>& Array<T>::operator=(const Array& obj)
 }
 
 /*
-faccio l'overloading dell'operatore delle []
-cosìcché io nel main possa stampare i valori del mio array senza dover
-per forza utilizzare dei metodi per stampare singolarmente
-i valori dell'attributo elementArr
+i do the overloading of the [] operator
+in order to print the values in the main without using
+precise functions to print exactly the elements of
+elementArr
 */
 template <typename T>
 T& Array<T>::operator[](size_t idx)
