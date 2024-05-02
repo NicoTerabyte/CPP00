@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 18:33:20 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/29 20:37:25 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:15:11 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Span::Span(unsigned int n) : N(n)//, array(n)
 {
-	
+
 	std::cout<<"Constructor called"<<std::endl;
 }
 
@@ -72,8 +72,6 @@ int	Span::shortestSpan()
 
 int	Span::longestSpan()
 {
-
-
 	if (this->array.size() < 2)
 		throw std::runtime_error("There are not enough elements (min 2) to calculate the shortest span");
 
@@ -82,15 +80,27 @@ int	Span::longestSpan()
 	return (*max - *min);
 }
 
+void	Span::printCont()
+{
+	std::vector<int>::iterator	it;
+
+	for (it = this->array.begin(); it != this->array.end(); ++it)
+	{
+		std::cout<<*it<<std::endl;
+	}
+}
+
 void	Span::allInOne()
 {
-	srand(static_cast<int>(time(0)));
+	srand((time(0)));
 	std::vector<int>	copyClone(this->N);
 	std::vector<int>::iterator	begin = copyClone.begin();
 	std::vector<int>::iterator	end = copyClone.end();
 	for (std::vector<int>::iterator ptr = begin; ptr != end; ++ptr)
 	{
-		addNumber(rand() % 100);
+		addNumber(rand() % 1000);
 	}
-	this->array = copyClone;
+	// this->array = copyClone;
+
 }
+

@@ -40,6 +40,9 @@ class Span
 
 		//extra method to add more numbers in one go
 		void	allInOne();
+
+		//printing for help
+		void	printCont();
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:45:39 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/29 20:38:45 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:16:29 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	main(void)
 
 	testIt.allInOne();
 	std::cout<< testIt.shortestSpan()<<std::endl;
+
+	testIt.printCont();
 	return (0);
 }
