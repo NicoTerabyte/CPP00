@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/05/01 18:12:30 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:15:24 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	PmergeMe::printPairsDeq(std::deque<std::pair<int, int> >& dequePairs)
 /*----Optional functions just for me PART END----*/
 
 /*----Vector Algorithm part----*/
+//algoritmo che teoricamente ordina le coppie mettendo il più grande tra i due
+//al secondo posto
 void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
 {
 	std::vector<std::pair<int, int> >::iterator	it;
@@ -105,6 +107,8 @@ void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int re
 	std::vector<int>	biggest;
 	std::vector<std::pair<int, int> >::iterator	it;
 
+	//questo dovrebbe essere il merge sort?
+	//però lacca la ricorsione da qualche parte
 	for (it = vectorPairs.begin(); it != vectorPairs.end(); it++)
 	{
 		if (biggest.empty())
@@ -130,10 +134,42 @@ void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int re
 		lowest.push_back(it->first);
 	}
 	if (odd)
-		lowest.push_back(rejected);
+		lowest.push_back(rejected); //questo va bene
 	binarySearchSortVec(biggest, lowest);
 }
 
+/*
+Novità
+Questa linea di codice in C++ sta aggiungendo un nuovo elemento
+alla fine dell'array splittedArray. L'elemento aggiunto è un array,
+che contiene un solo elemento preso dall'array vectorAlgorithm all'indice i.
+Le graffe {} in questo contesto sono usate per inizializzare un nuovo array.
+Poiché vectorAlgorithm[i] è un elemento singolo,
+le graffe sono usate per creare un array che contiene solo quell'elemento.
+Questo è necessario perché splittedArray è un array di array,
+quindi ogni elemento in splittedArray deve essere un array,
+anche se contiene solo un elemento.
+	*/
+
+std::vector<int>	PmergeMe::createPairs()
+{
+	std::vector<std::vector<int>>	splittedArray;
+	std::vector<int>				tmpArray;
+
+	for (int i = 0; i < vectorAlgorithm.size(); ++i)
+	{
+		int	tmpLength = tmpArray.size();
+		if (tmpLength == 1)
+		{
+			tmpArray.push_back(vectorAlgorithm[i]);
+			splittedArray.push_back(tmpArray);
+		}
+		else if ((splittedArray.size() * 2) == (vectorAlgorithm.size() - 1))
+			splittedArray.push_back({vectorAlgorithm[i]});
+		else if (tmpLength == 0)
+			tmpArray.push_back(vectorAlgorithm[i]);
+	}
+}
 //if the vector is odd i save the last value
 //and i pop it out of the vector
 
@@ -142,27 +178,25 @@ double	PmergeMe::vectorMergeInsert()
 	clock_t	start, end;
 	int		rejected;
 	bool	odd = false;
-	//std::vector<std::pair<int, int> >	pairs;
-	std::vector<int>					splitArray;
+	std::vector<std::pair<int, int> >	pairs;
 
 	start = clock();
-	//fase uno determinare la grandezza del container
-	//Una grandezza dispari determina la necessità di salvare il valore
-	//l'ultimo a parte e toglierlo dal container
-	//quindi fase 1 ok
+	//salvataggio del valore che rende l'array dispari
 	if (vectorAlgorithm.size() % 2 != 0)
 	{
 		odd = true;
 		rejected = vectorAlgorithm.back();
 		vectorAlgorithm.pop_back();
 	}
-	// for (size_t i = 0; i < vectorAlgorithm.size(); i += 2)
-	// {
-	// 	std::pair<int, int> tmpPair(vectorAlgorithm[i], vectorAlgorithm[i + 1]);
-	// 	pairs.push_back(tmpPair);
-	// }
-	// sortPairVectorVer(pairs);
-	// dividePair(pairs, rejected, odd);
+	//creazione delle coppie
+	for (size_t i = 0; i < vectorAlgorithm.size(); i += 2)
+	{
+		std::pair<int, int> tmpPair(vectorAlgorithm[i], vectorAlgorithm[i + 1]);
+		pairs.push_back(tmpPair);
+	}
+	//funzione che teoricamente dovrebbe ordinare le coppie
+	sortPairVectorVer(pairs);
+	dividePair(pairs, rejected, odd);
 	end = clock();
 	double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
 	return (elapsed_time);
