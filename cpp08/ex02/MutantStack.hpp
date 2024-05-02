@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:03:33 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/03/23 21:36:49 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:19:54 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include <algorithm>
 #include <deque>
 /*
-per risolvere il dilemma dell'iterazione pare
-ci sia bisogno dell'ereditarietà
+to resolve the iteration dilemma we need
+to use the inheritance
 */
 template <typename T, typename Container = std::deque<T> >
 

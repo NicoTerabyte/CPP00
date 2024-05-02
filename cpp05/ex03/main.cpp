@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:52 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/28 17:40:51 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:24:46 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(void)
 		AForm	*randomStuff(doItForMe.makeForm("shruberry request", "alberello"));
 		first.signForm(*randomStuff);
 		second.executeForm(*randomStuff);
+		delete randomStuff;
 	}
 	catch (const std::exception& e)
 	{
