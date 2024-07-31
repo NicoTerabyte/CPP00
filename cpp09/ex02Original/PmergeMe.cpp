@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/05/02 14:15:24 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/07/30 14:40:33 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,10 +153,10 @@ anche se contiene solo un elemento.
 
 std::vector<int>	PmergeMe::createPairs()
 {
-	std::vector<std::vector<int>>	splittedArray;
+	std::vector<std::vector<int> >	splittedArray;
 	std::vector<int>				tmpArray;
 
-	for (int i = 0; i < vectorAlgorithm.size(); ++i)
+	for (size_t i = 0; i < vectorAlgorithm.size(); ++i)
 	{
 		int	tmpLength = tmpArray.size();
 		if (tmpLength == 1)

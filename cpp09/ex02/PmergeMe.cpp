@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/05/01 18:12:30 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/07/31 19:57:15 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,13 +137,14 @@ void	PmergeMe::dividePair(std::vector<std::pair<int, int> >& vectorPairs, int re
 //if the vector is odd i save the last value
 //and i pop it out of the vector
 
+//2.1 funzione utilizzata per ordinare il vettore
 double	PmergeMe::vectorMergeInsert()
 {
 	clock_t	start, end;
 	int		rejected;
 	bool	odd = false;
-	//std::vector<std::pair<int, int> >	pairs;
-	std::vector<int>					splitArray;
+	std::vector<int>::iterator	it;
+	std::vector<std::pair<int, int> >	pairs;
 
 	start = clock();
 	//fase uno determinare la grandezza del container
@@ -156,15 +157,17 @@ double	PmergeMe::vectorMergeInsert()
 		rejected = vectorAlgorithm.back();
 		vectorAlgorithm.pop_back();
 	}
-	// for (size_t i = 0; i < vectorAlgorithm.size(); i += 2)
-	// {
-	// 	std::pair<int, int> tmpPair(vectorAlgorithm[i], vectorAlgorithm[i + 1]);
-	// 	pairs.push_back(tmpPair);
-	// }
-	// sortPairVectorVer(pairs);
-	// dividePair(pairs, rejected, odd);
+	for (it = this->vectorAlgorithm.begin(); it != (this->vectorAlgorithm.end() - 1)
+	&& it != this->vectorAlgorithm.end()	; it+=2)
+	{
+		std::pair<int, int>	tmpPair(*it, *(it + 1));
+		pairs.push_back(tmpPair);
+	}
+	dividePair(pairs, rejected, odd);
 	end = clock();
 	double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
+	(void) rejected;
+	(void) odd;
 	return (elapsed_time);
 }
 /*----Vector Algorithm part----*/
@@ -279,8 +282,12 @@ double	PmergeMe::dequeMergeInsert()
 // }
 
 
+//aggiornameto del 31/07/2024
+//l'algoritmo funziona per la deque ma non è stata fatta
+//la versione per il container vector
 void	PmergeMe::mergeInsertionSort(char** argv, int ac)
 {
+	//pare che i due vettori vengano trattati diversamente
 	double	vecDiff, deqDiff;
 
 	std::cout<<"Before:  ";
@@ -292,6 +299,10 @@ void	PmergeMe::mergeInsertionSort(char** argv, int ac)
 	deqDiff = dequeMergeInsert();
 	for (size_t i = 0; i < vectorAlgorithm.size(); i++)
 		std::cout<<vectorAlgorithm[i]<<" ";
+	std::cout<<""<<std::endl;
+	for (size_t i = 0; i < dequeAlgorithm.size(); i++)
+		std::cout<<dequeAlgorithm[i]<<" ";
+	// stampo i due container per capire se è andato tutto bene
 	std::cout<<""<<std::endl;
 	std::cout<<"Time to process a range of "<<ac<<" elements with std::vector : "<<std::fixed << std::showpoint << std::setprecision(5)<<vecDiff / 100<<" us"<<std::endl;
 	std::cout<<"Time to process a range of"<<ac<<" elements with std::deque : "<<std::fixed << std::showpoint << std::setprecision(5)<<deqDiff / 100<<" us"<<std::endl;
