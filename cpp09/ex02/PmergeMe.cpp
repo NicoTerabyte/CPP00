@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/07/31 19:57:15 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/07/31 20:00:45 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,18 +268,6 @@ double	PmergeMe::dequeMergeInsert()
 }
 /*----deque merge insertion sort algorithm section end----*/
 
-/*----Output requested section part----*/
-
-/*this part could be put away becasue it doesn't seem good enough*/
-// void	printOut(PmergeMe containers, std::string argv)
-// {
-// 	struct timeval	start, end;
-// 	std::cout<<"Before";
-// 	for (int i = 1; i < argv.size(); i++)
-// 		std::cout<<argv[i];
-// 	std::cout<<""<<std::endl;
-// 	std::cout<<"After";
-// }
 
 
 //aggiornameto del 31/07/2024
@@ -287,7 +275,6 @@ double	PmergeMe::dequeMergeInsert()
 //la versione per il container vector
 void	PmergeMe::mergeInsertionSort(char** argv, int ac)
 {
-	//pare che i due vettori vengano trattati diversamente
 	double	vecDiff, deqDiff;
 
 	std::cout<<"Before:  ";
@@ -302,7 +289,6 @@ void	PmergeMe::mergeInsertionSort(char** argv, int ac)
 	std::cout<<""<<std::endl;
 	for (size_t i = 0; i < dequeAlgorithm.size(); i++)
 		std::cout<<dequeAlgorithm[i]<<" ";
-	// stampo i due container per capire se è andato tutto bene
 	std::cout<<""<<std::endl;
 	std::cout<<"Time to process a range of "<<ac<<" elements with std::vector : "<<std::fixed << std::showpoint << std::setprecision(5)<<vecDiff / 100<<" us"<<std::endl;
 	std::cout<<"Time to process a range of"<<ac<<" elements with std::deque : "<<std::fixed << std::showpoint << std::setprecision(5)<<deqDiff / 100<<" us"<<std::endl;

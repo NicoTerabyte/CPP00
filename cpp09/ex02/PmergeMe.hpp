@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/07/30 14:48:12 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/07/31 20:03:42 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ allora suddividendolo in step manca da fare:
 	prendere le coppie e salvare le più piccole e le più grandi in due
 	vettori separati, e poi ordinare le più piccole o le più grandi in ordine crescente
 	dopo dovremo inserire i valori mancanti nel vettore ordinato
+
+
+da quello che ho capito attualmente ciò che manca da implementare sarebbe
+la sezione di jacobstahl, solo che ancora non mi è ben chiaro come si utilizza
+e dove dovrei applicarlo nel mio codice
 */
 #include <iostream>
 #include <sstream>
