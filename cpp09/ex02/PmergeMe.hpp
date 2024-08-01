@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/07/31 20:03:42 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/01 09:06:44 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ allora suddividendolo in step manca da fare:
 da quello che ho capito attualmente ciò che manca da implementare sarebbe
 la sezione di jacobstahl, solo che ancora non mi è ben chiaro come si utilizza
 e dove dovrei applicarlo nel mio codice
+
+La jacobSthal implementation:
+
 */
 #include <iostream>
 #include <sstream>
@@ -54,7 +57,6 @@ e dove dovrei applicarlo nel mio codice
 #include <utility>
 #include <iomanip>
 #include <ctime>
-
 class PmergeMe
 {
 	private:
@@ -67,6 +69,7 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe& obj);
 
 		//optional functions for me
+		void	printSpecifiedCont(std::deque<int> pending);
 		void	printCont();
 		void	printPairsVec(std::vector<std::pair<int, int> >& vectorPairs);
 		void	printPairsDeq(std::deque<std::pair<int, int> >& dequePairs);

@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/07/31 20:00:45 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/01 09:29:27 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,16 @@ void	PmergeMe::printPairsDeq(std::deque<std::pair<int, int> >& dequePairs)
 	{
 		std::cout<<"("<<it->first<<", "<<it->second<<")"<<std::endl;
 	}
+}
+
+
+//this is for checking the pending container mostly
+void	PmergeMe::printSpecifiedCont(std::deque<int> pending)
+{
+	std::deque<int>::iterator	it;
+
+	for (it = pending.begin(); it != pending.end(); it++)
+		std::cout<<"pending value "<<*it<<std::endl;
 }
 /*----Optional functions just for me PART END----*/
 
@@ -201,40 +211,45 @@ void	PmergeMe::binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lo
 	this->dequeAlgorithm = biggest;
 }
 
-void	PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rejected, bool odd)
+/*
+Da quel che ho capito è proprio in questa sezione che bisognerebbe
+sapere e utilizzare la jachobstahll notation
+*/
+//la gestione dei numeri è stata gestita male sembra che i valori non
+//siano stati separati come si deve tra le coppie
+//e per jacob devo averli perfettamente differenziati se no sa da fare
+void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rejected, bool odd)
 {
-	std::deque<int>	lowest;
-	std::deque<int>	biggest;
-	std::deque<std::pair<int, int> >::iterator	it;
+	std::deque<int> lowest;
+	std::deque<int> biggest;
+	std::deque<std::pair<int, int> >::iterator it;
 
 	for (it = dequePairs.begin(); it != dequePairs.end(); it++)
 	{
-		if (biggest.empty())
+		// Confronta i valori della coppia
+		if (it->first > it->second)
 		{
-			biggest.push_back(it->second);
+			// Se il primo è maggiore, inserisci il secondo in biggest e il primo in lowest
+			biggest.push_back(it->first);
+			lowest.push_back(it->second);
 		}
 		else
 		{
-			bool	inserted = false;
-
-			for (size_t i = 0; i < biggest.size(); i++)
-			{
-				if (it->second < biggest[i])
-				{
-					biggest.insert(biggest.begin() + i, it->second);
-					inserted = true;
-					break;
-				}
-			}
-			if (!inserted)
-				biggest.push_back(it->second);
+			// Se il secondo è maggiore, inserisci il primo in biggest e il secondo in lowest
+			biggest.push_back(it->second);
+			lowest.push_back(it->first);
 		}
-		lowest.push_back(it->first);
 	}
+
 	if (odd)
 		lowest.push_back(rejected);
+
+	// Stampa dei risultati finali
+	// printPairsDeq(dequePairs);
+	// printSpecifiedCont(biggest);
 	binarySearchSortDeq(biggest, lowest);
 }
+
 
 //if the deque is odd i save the last value
 //and i pop it out of the deque;
@@ -262,7 +277,6 @@ double	PmergeMe::dequeMergeInsert()
 	}
 	phase2Deque(pairs, rejected, odd);
 	end = clock();
-
 	double	elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
 	return (elapsed_time);
 }
