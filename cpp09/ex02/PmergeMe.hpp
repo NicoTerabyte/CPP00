@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/01 09:06:44 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:10:23 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ e dove dovrei applicarlo nel mio codice
 
 La jacobSthal implementation:
 
+
+
+*/
+
+/*
 */
 #include <iostream>
 #include <sstream>
@@ -57,6 +62,8 @@ La jacobSthal implementation:
 #include <utility>
 #include <iomanip>
 #include <ctime>
+#include <cstddef>
+
 class PmergeMe
 {
 	private:
@@ -69,12 +76,16 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe& obj);
 
 		//optional functions for me
+		//all for printing nothing to do with the logic but they are good
+		//for debugging
 		void	printSpecifiedCont(std::deque<int> pending);
 		void	printCont();
 		void	printPairsVec(std::vector<std::pair<int, int> >& vectorPairs);
 		void	printPairsDeq(std::deque<std::pair<int, int> >& dequePairs);
 		//important functions for the ex
 		void	mergeInsertionSort(char** argv, int ac);
+		int		jacobsthal(int containerLenght);
+		std::vector<int> build_jacob_insertion_sequence(int array_len);
 		//vector manipulation
 		double	vectorMergeInsert();
 		void	sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs);
@@ -84,10 +95,6 @@ class PmergeMe
 		double	dequeMergeInsert();
 		void	phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rejected, bool odd);
 		void	binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lowest);
+		void	sortBiggest(std::deque<int>& biggest);
 };
-	//EXPERIMENT
-	void	sortPairDequeVer(std::deque<std::pair<int, int> >& dequePairs);
-	//output manipulation
-	// void	printOut(PmergeMe containers, std::string argv);
-
 #endif
