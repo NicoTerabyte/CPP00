@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/03 16:48:13 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/03 16:58:36 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,9 +171,15 @@ void	PmergeMe::binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& 
 }
 
 /*
-* UPDATE THIS PART AS YOU UPDATED THE DEQUE ALGORITHM
-still needed:
-	todo:jacobsthal
+ *COMMENTS FOR THE THEORY:
+	printSpecifiedCont(lowest);
+	Applica la sequenza di Jacobsthal per ordinare i numeri più piccoli
+	here's important because is where the difference with
+	the main ide happens
+	the difference starts from heree
+	/this variable has number of sequences found in the container
+		TALKING ABOUT jacob_insertion_sequence
+
 */
 void	PmergeMe::phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int rejected, bool odd)
 {
@@ -209,21 +215,11 @@ void	PmergeMe::phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int 
 		std::deque<int> faker;
 		sortBiggest(faker, biggest, 0);
 	}
-	// printSpecifiedCont(lowest);
-	// Applica la sequenza di Jacobsthal per ordinare i numeri più piccoli
-	//* here's important because is where the difference with
-	//* the main ide happens
-	// the difference starts from heree
-	//* this variable has number of sequences found in the container
+
 	std::vector<int> jacob_insertion_sequence = build_jacob_insertion_sequence_vect(lowest.size());
 	std::vector<int> sorted_lowest;
-	//we have this vector for the final sorted_pending sequence
 	sorted_lowest.push_back(lowest[0]); // Inserisci il primo elemento
-	//here i need to understand well what happens
-	//what is the iterator for?
 	int iterator = 0;
-	//! this for only triggers if we have actually a jacob sequence
-	std::cout<<"morite "<<jacob_insertion_sequence.size()<<std::endl;
 	for (int i = 0; (size_t) i < jacob_insertion_sequence.size(); ++i)
 	{
 		int index = jacob_insertion_sequence[i]; //salvo l'indice dell'ultimo valore nella jacobstahl sequence
@@ -239,14 +235,12 @@ void	PmergeMe::phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int 
 		iterator++;
 	}
 
-	//* and here is where we have the same thing that we have done before
-	// Applica l'ordinamento finale utilizzando binarySearchSortDeq
+	// Applica l'ordinamento finale utilizzando binarySearchSortDeq here insertion sort
 	binarySearchSortVec(biggest, sorted_lowest);
 }
 
 //if the vector is odd i save the last value
 //and i pop it out of the vector
-
 //2.1 funzione utilizzata per ordinare il vettore
 double	PmergeMe::vectorMergeInsert()
 {
@@ -338,8 +332,6 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 	std::deque<std::pair<int, int> >::iterator it;
 
 	// Separa i numeri in biggest e lowest
-	//*Here is the separations of the pair checking
-	//* who's going to the main array
 	for (it = dequePairs.begin(); it != dequePairs.end(); ++it)
 	{
 		comp++;
@@ -364,12 +356,7 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 		std::vector<int> faker;
 		sortBiggest(biggest, faker, 1);
 	}
-	// printSpecifiedCont(lowest);
-	// Applica la sequenza di Jacobsthal per ordinare i numeri più piccoli
-	//* here's important because is where the difference with
-	//* the main ide happens
-	// the difference starts from heree
-	//* this variable has number of sequences found in the container
+
 	std::deque<int> jacob_insertion_sequence = build_jacob_insertion_sequence_deq(lowest.size());
 	std::deque<int> sorted_lowest;
 	//we have this deque for the final sorted_pending sequence
@@ -394,8 +381,7 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 		iterator++;
 	}
 
-	//* and here is where we have the same thing that we have done before
-	// Applica l'ordinamento finale utilizzando binarySearchSortDeq
+
 	binarySearchSortDeq(biggest, sorted_lowest);
 }
 
@@ -433,16 +419,6 @@ double	PmergeMe::dequeMergeInsert()
 }
 /*----deque merge insertion sort algorithm section end----*/
 
-
-
-//aggiornameto del 31/07/2024
-//l'algoritmo funziona per la deque ma non è stata fatta
-//la versione per il container vector
-/* //! Sezione di analisi approccio per rivedere e migliorare il codice
-	todo: Implementare jacob per vettori e modificare l'algoritmo
-	todo: dei vettori
-	todo: fare pulizia del codice e dei commenti
-*/
 void	PmergeMe::mergeInsertionSort(char** argv, int ac)
 {
 	double	vecDiff, deqDiff;
