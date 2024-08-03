@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/02 12:10:23 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:52:24 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ class PmergeMe
 	private:
 		std::deque<int>dequeAlgorithm;
 		std::vector<int>vectorAlgorithm;
+		int	comp;
 	public:
 		PmergeMe(std::deque<int> dequeAlgorithm, std::vector<int> vectorAlgorithm);
 		~PmergeMe();
@@ -85,16 +86,17 @@ class PmergeMe
 		//important functions for the ex
 		void	mergeInsertionSort(char** argv, int ac);
 		int		jacobsthal(int containerLenght);
-		std::vector<int> build_jacob_insertion_sequence(int array_len);
+		std::deque<int> build_jacob_insertion_sequence_deq(int array_len);
+		std::vector<int> build_jacob_insertion_sequence_vect(int array_len);
 		//vector manipulation
 		double	vectorMergeInsert();
 		void	sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs);
 		void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest);
-		void	dividePair(std::vector<std::pair<int, int> >& vectorPairs, int rejected, bool odd);
+		void	phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int rejected, bool odd);
 		//deque algorithm
 		double	dequeMergeInsert();
 		void	phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rejected, bool odd);
 		void	binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lowest);
-		void	sortBiggest(std::deque<int>& biggest);
+		void	sortBiggest(std::deque<int>& biggest, std::vector<int>& biggestVec, int who);
 };
 #endif
