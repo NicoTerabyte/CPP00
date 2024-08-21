@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/21 11:52:40 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:46:41 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,7 @@ void	PmergeMe::phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int 
 		lowest .push_back(rejected);
 
 	// Ordina i numeri più grandi
+	//questo dovrebbe essere ricorsivo e gestire le coppie grandi
 	{
 		//this is for memory
 		std::deque<int> faker;

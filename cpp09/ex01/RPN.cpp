@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:36:28 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/21 12:45:03 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:41:38 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	RPN::calculation(std::string argv)
 	{
 		if (isdigit(*it))
 			this->expression.push(*it - 48);
-		else if(*it == '+' || *it == '-' || *it == '*' || *it == '/')
+		else if((*it == '+' || *it == '-' || *it == '*' || *it == '/') && this->expression.size() > 2)
 		{
 			secondN = this->expression.top();
 			this->expression.pop();
