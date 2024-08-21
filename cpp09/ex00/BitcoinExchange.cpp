@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:14:08 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/03 15:52:38 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:21:03 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 BitcoinExchange::BitcoinExchange(std::list<std::string> date, std::list<float> btCoinValue, std::multimap<std::string, float> csvFile)
 {
-	std::cout<<"Default constructor called"<<std::endl;
+	// std::cout<<"Default constructor called"<<std::endl;
 	this->date = date;
 	this->btCoinValue = btCoinValue;
 	this->csvFile = csvFile;
@@ -22,7 +22,7 @@ BitcoinExchange::BitcoinExchange(std::list<std::string> date, std::list<float> b
 
 BitcoinExchange::~BitcoinExchange()
 {
-	std::cout<<"Destructor called"<<std::endl;
+	// std::cout<<"Destructor called"<<std::endl;
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) : date(obj.date), btCoinValue(obj.btCoinValue), csvFile(obj.csvFile)
@@ -157,8 +157,6 @@ void	BitcoinExchange::printCurrentValue()
 			else
 				std::cout<<"Error: not a positive number"<<std::endl;
 		}
-		// else
-		// 	std::cout<<"Error bad input "<<it->first<<std::endl;
 		++itVal;
 	}
 }

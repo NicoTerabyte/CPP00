@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/03 16:58:36 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/21 11:52:40 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,6 @@ void	PmergeMe::phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int 
 
 	std::vector<int> jacob_insertion_sequence = build_jacob_insertion_sequence_vect(lowest.size());
 	std::vector<int> sorted_lowest;
-	sorted_lowest.push_back(lowest[0]); // Inserisci il primo elemento
 	int iterator = 0;
 	for (int i = 0; (size_t) i < jacob_insertion_sequence.size(); ++i)
 	{
@@ -360,7 +359,7 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 	std::deque<int> jacob_insertion_sequence = build_jacob_insertion_sequence_deq(lowest.size());
 	std::deque<int> sorted_lowest;
 	//we have this deque for the final sorted_pending sequence
-	sorted_lowest.push_back(lowest[0]); // Inserisci il primo elemento
+	// sorted_lowest.push_back(lowest[0]); // Inserisci il primo elemento
 	//here i need to understand well what happens
 	//what is the iterator for?
 	int iterator = 0;
@@ -380,8 +379,6 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 		sorted_lowest.push_back(lowest[iterator]);
 		iterator++;
 	}
-
-
 	binarySearchSortDeq(biggest, sorted_lowest);
 }
 

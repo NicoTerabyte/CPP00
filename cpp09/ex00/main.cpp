@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:32:36 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/03 15:07:10 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:18:17 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@
 
 void	fillCsvMap(std::multimap<std::string, float> &csvFile)
 {
-	std::ifstream	file("data.csv");
-	std::string	line;
+	std::ifstream		file("data.csv");
+	std::string			line;
 	std::stringstream	reader;
-	float	coinValue;
-
+	float				coinValue;
 	std::getline(file, line);
 	if (!file.is_open())
 	{
-		std::cerr<<"Error could not open file "<<std::endl;
-		return ;
+		throw std::runtime_error("File not found\n");
 	}
 	while (std::getline(file, line))
 	{

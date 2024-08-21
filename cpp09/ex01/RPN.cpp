@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:36:28 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/04/04 17:07:57 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:45:03 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ void	RPN::calculation(std::string argv)
 		else if (!isspace(*it))
 			throw std::runtime_error("Error");
 	}
+	if (this->expression.size() != 1)
+		throw std::runtime_error("Error	");
 	std::cout<<this->expression.top()<<std::endl;
 }

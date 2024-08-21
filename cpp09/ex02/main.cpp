@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:06:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/03 16:56:01 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/21 11:46:11 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ main
 //! This check is futile 🦅
 void	checkDup(std::deque<int> dequeMerge)
 {
-	for (int i = 0; (size_t)i < dequeMerge.size(); i++)
+	for (int i = 1; (size_t)i < dequeMerge.size(); i++)
 	{
-		int j = i;
-		while (j != 0)
+		int j = 0;
+		while (j != i)
 		{
+
 			if (dequeMerge[j] == dequeMerge[i])
 				throw std::runtime_error("\033[1;31mFound a duplicate in the container !!\033[0m\n");
+			j++;
 		}
 	}
 }
@@ -52,6 +54,7 @@ int	main(int ac, char **av)
 		try
 		{
 			int					convNum;
+			// int					testNum = -42;
 			std::stringstream	ss;
 			for (int i = 1; av[i]; i++)
 			{
@@ -62,10 +65,11 @@ int	main(int ac, char **av)
 					throw std::runtime_error("Only positive numbers please");
 				if (ss.fail())
 					throw std::runtime_error("That was a letter you maggot 🦅🦅🦅");
+				// testNum = convNum;
 				dequeCont.push_back(convNum);
 				vectorCont.push_back(convNum);
 			}
-			// checkDup(dequeCont);
+			checkDup(dequeCont);
 			PmergeMe	fordJohnson(dequeCont, vectorCont);
 			//from here i will start doing the fordJohnson
 			fordJohnson.mergeInsertionSort(av, ac - 1);
