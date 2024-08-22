@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/22 14:57:23 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/22 15:24:17 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,17 @@ int	PmergeMe::jacobsthal(int containerLenght)
 		return 0;
 	if (containerLenght == 1)
 		return 1;
-	return jacobsthal(containerLenght - 1) + 2 * jacobsthal(containerLenght - 2);
+	return (jacobsthal(containerLenght - 1) + 2 * jacobsthal(containerLenght - 2));
 }
 
 
 
 std::vector<int> PmergeMe::build_jacob_insertion_sequence_vect(int array_len)
 {
-	std::vector<int> end_sequence;
-	int jacob_index = 3; // Il primo che conta
+	std::vector<int>	end_sequence;
+	int					jacob_index;
 
+	jacob_index = 3;
 	while (jacobsthal(jacob_index) < array_len - 1)
 	{
 		end_sequence.push_back(jacobsthal(jacob_index));
@@ -118,7 +119,7 @@ std::vector<int> PmergeMe::build_jacob_insertion_sequence_vect(int array_len)
 std::deque<int> PmergeMe::build_jacob_insertion_sequence_deq(int array_len)
 {
 	std::deque<int> end_sequence;
-	int jacob_index = 3; // Il primo che conta
+	int jacob_index = 3;
 
 	while (jacobsthal(jacob_index) < array_len - 1)
 	{
@@ -206,10 +207,10 @@ void	PmergeMe::phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int 
 
 double	PmergeMe::vectorMergeInsert()
 {
-	clock_t	start, end;
-	int		rejected;
-	bool	odd = false;
-	std::vector<int>::iterator	it;
+	clock_t								start, end;
+	int									rejected;
+	bool								odd = false;
+	std::vector<int>::iterator			it;
 	std::vector<std::pair<int, int> >	pairs;
 
 	start = clock();
@@ -220,7 +221,7 @@ double	PmergeMe::vectorMergeInsert()
 		vectorAlgorithm.pop_back();
 	}
 	for (it = this->vectorAlgorithm.begin(); it != (this->vectorAlgorithm.end() - 1)
-	&& it != this->vectorAlgorithm.end()	; it+=2)
+	&& it != this->vectorAlgorithm.end(); it += 2)
 	{
 		std::pair<int, int>	tmpPair(*it, *(it + 1));
 		pairs.push_back(tmpPair);
@@ -235,8 +236,6 @@ double	PmergeMe::vectorMergeInsert()
 /*----Vector Algorithm part----*/
 
 /*----deque merge insertion sort algorithm section----*/
-
-
 
 void	PmergeMe::binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lowest)
 {
@@ -284,14 +283,12 @@ void PmergeMe::mergeVec(std::vector<int>& vec, int left, int mid, int right)
 		}
 		k++;
 	}
-
 	while (i < n1)
 	{
 		vec[k] = L[i];
 		i++;
 		k++;
 	}
-
 	while (j < n2)
 	{
 		vec[k] = R[j];
@@ -316,7 +313,6 @@ void PmergeMe::mergeDeq(std::deque<int>& deq, int left, int mid, int right)
 	{
 		R[j] = deq[mid + 1 + j];
 	}
-
 	int i = 0, j = 0, k = left;
 
 	while (i < n1 && j < n2)
@@ -333,14 +329,12 @@ void PmergeMe::mergeDeq(std::deque<int>& deq, int left, int mid, int right)
 		}
 		k++;
 	}
-
 	while (i < n1)
 	{
 		deq[k] = L[i];
 		i++;
 		k++;
 	}
-
 	while (j < n2)
 	{
 		deq[k] = R[j];

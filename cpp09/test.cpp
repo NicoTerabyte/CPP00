@@ -36,7 +36,6 @@ void merge(std::vector<int>& vec, int left, int mid, int right)
 		k++;
 	}
 
-	// Copia gli elementi rimanenti di L[]
 	while (i < n1)
 	{
 		vec[k] = L[i];
