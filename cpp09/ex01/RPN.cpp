@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:36:28 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/21 16:41:38 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/22 15:03:55 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,20 @@ RPN&	RPN::operator=(const RPN& obj)
 
 void	RPN::calculation(std::string argv)
 {
-	int	firstN;
-	int	secondN;
+	int						firstN;
+	int						secondN;
 	std::string::iterator	it;
 
 	for (it = argv.begin(); it != argv.end(); it++)
 	{
 		if (isdigit(*it))
 			this->expression.push(*it - 48);
-		else if((*it == '+' || *it == '-' || *it == '*' || *it == '/') && this->expression.size() > 2)
+		else if((*it == '+' || *it == '-' || *it == '*' || *it == '/') && this->expression.size() > 1)
 		{
 			secondN = this->expression.top();
 			this->expression.pop();
 			firstN = this->expression.top();
 			this->expression.pop();
-
 			switch (*it)
 			{
 				case '+':
@@ -73,6 +72,6 @@ void	RPN::calculation(std::string argv)
 			throw std::runtime_error("Error");
 	}
 	if (this->expression.size() != 1)
-		throw std::runtime_error("Error	");
+		throw std::runtime_error("Error");
 	std::cout<<this->expression.top()<<std::endl;
 }

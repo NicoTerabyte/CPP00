@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/22 14:25:17 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:57:37 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,12 @@ class PmergeMe
 		std::vector<int> build_jacob_insertion_sequence_vect(int array_len);
 		//vector manipulation
 		double	vectorMergeInsert();
-		void	sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs);
 		void	binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest);
 		void	phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int rejected, bool odd);
-		//deque algorithm
+		//deque manipulation
 		double	dequeMergeInsert();
 		void	phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rejected, bool odd);
 		void	binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lowest);
-		void	sortBiggest(std::deque<int>& biggest, std::vector<int>& biggestVec, int who);
 
 		void	mergeVec(std::vector<int>& vec, int left, int mid, int right);
 		void	mergeDeq(std::deque<int>& deq, int left, int mid, int right);

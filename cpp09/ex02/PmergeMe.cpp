@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/22 14:43:18 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:57:23 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,22 +131,6 @@ std::deque<int> PmergeMe::build_jacob_insertion_sequence_deq(int array_len)
 /*----jacobsthal  section END*/
 
 /*  ----Vector Algorithm part----  */
-
-void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
-{
-	std::vector<std::pair<int, int> >::iterator	it;
-	int											tmp = 0;
-
-	for (it = vectorPairs.begin(); it != vectorPairs.end(); it++)
-	{
-		if (it->first > it->second)
-		{
-			tmp = it->first;
-			it->first = it->second;
-			it->second = tmp;
-		}
-	}
-}
 
 
 void	PmergeMe::binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest)
@@ -469,7 +453,7 @@ double	PmergeMe::dequeMergeInsert()
 		pairs.push_back(tmpPair);
 	}
 
-	phase2Deque(pairs, rejected, odd);ù
+	phase2Deque(pairs, rejected, odd);
 
 	end = clock();
 	double	elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;

@@ -6,38 +6,21 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:06:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/22 14:41:45 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:52:41 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-
-
-/*
-Analisi del codice:
-main
-	il main e dove avviene l'inizializzazione dei container
-	i quali appena inizializzati verranno passati nel costruttore
-	della classe PmergeMe creando l'apposito oggetto
-	Ho utilizzato la còasse stringstream per eseguire una conversione
-	numerica fluida e senza intoppi
-	Ho anche eseguito un piccolo controllo sul numero convertito visto che 'algoritmo
-	e la consegna dicevano di accettare solo numeri positivi interi
-	Il subject non parla di valori duplicati inacettati
-
-*/
-
-//! This check is futile 🦅
-void	checkDup(std::deque<int> dequeMerge)
+void	checkDup(std::vector<int> vectorMerge)
 {
-	for (int i = 1; (size_t)i < dequeMerge.size(); i++)
+	for (int i = 1; (size_t)i < vectorMerge.size(); i++)
 	{
 		int j = 0;
 		while (j != i)
 		{
 
-			if (dequeMerge[j] == dequeMerge[i])
+			if (vectorMerge[j] == vectorMerge[i])
 				throw std::runtime_error("\033[1;31mFound a duplicate in the container !!\033[0m\n");
 			j++;
 		}
@@ -55,6 +38,7 @@ int	main(int ac, char **av)
 		{
 			int					convNum;
 			std::stringstream	ss;
+
 			for (int i = 1; av[i]; i++)
 			{
 				ss.clear();
@@ -67,7 +51,7 @@ int	main(int ac, char **av)
 				dequeCont.push_back(convNum);
 				vectorCont.push_back(convNum);
 			}
-			checkDup(dequeCont);
+			checkDup(vectorCont);
 			PmergeMe	fordJohnson(dequeCont, vectorCont);
 			fordJohnson.mergeInsertionSort(av, ac - 1);
 		}
