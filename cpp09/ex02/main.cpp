@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:06:06 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/21 11:46:11 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:41:45 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,21 @@ int	main(int ac, char **av)
 		try
 		{
 			int					convNum;
-			// int					testNum = -42;
 			std::stringstream	ss;
 			for (int i = 1; av[i]; i++)
 			{
 				ss.clear();
 				ss.str(av[i]);
 				ss >> convNum;
-				if (convNum < 0) //gestire i casi particolari c'e ne sono altri
+				if (convNum < 0)
 					throw std::runtime_error("Only positive numbers please");
 				if (ss.fail())
 					throw std::runtime_error("That was a letter you maggot 🦅🦅🦅");
-				// testNum = convNum;
 				dequeCont.push_back(convNum);
 				vectorCont.push_back(convNum);
 			}
 			checkDup(dequeCont);
 			PmergeMe	fordJohnson(dequeCont, vectorCont);
-			//from here i will start doing the fordJohnson
 			fordJohnson.mergeInsertionSort(av, ac - 1);
 		}
 		catch (const std::exception& e)
@@ -81,6 +78,5 @@ int	main(int ac, char **av)
 	}
 	else
 		std::cout<<"Error, put at least one argument"<<std::endl;
-
 	return (0);
 }

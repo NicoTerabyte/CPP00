@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:01:50 by lnicoter          #+#    #+#             */
-/*   Updated: 2024/08/21 16:46:41 by lnicoter         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:43:18 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	PmergeMe::printSpecifiedCont(std::deque<int> pending)
 //! You can ignore the part up because is all optional stuff
 //! That doesn't involve the logic of the code
 
-/*----sezione jacobsthal----*/
+/*----jacobsthal section----*/
 
 //* Mostly jacobstahl is used for the pending array
 //* is  it used to lower the amount of comparasisons by dividing
@@ -125,19 +125,13 @@ std::deque<int> PmergeMe::build_jacob_insertion_sequence_deq(int array_len)
 		end_sequence.push_back(jacobsthal(jacob_index));
 		jacob_index++;
 	}
-
 	return end_sequence;
 }
 
-/*----Sezione jacobsthal END*/
+/*----jacobsthal  section END*/
 
 /*  ----Vector Algorithm part----  */
 
-/*
-*this part is used for both the container to
-*sort the pairs made before when we were applying the first phases of the
-*algorithm
-*/
 void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
 {
 	std::vector<std::pair<int, int> >::iterator	it;
@@ -155,10 +149,6 @@ void	PmergeMe::sortPairVectorVer(std::vector<std::pair<int, int> >& vectorPairs)
 }
 
 
-//questo alla fine prima ordinare uno dei due vettori
-// void	binarySearchSortVec(std::vector<int>& biggest)
-//questa sezione funziona indipendentemente anche se non
-//uso jacob
 void	PmergeMe::binarySearchSortVec(std::vector<int>& biggest, std::vector<int>& lowest)
 {
 	std::vector<int>::iterator	it;
@@ -187,9 +177,6 @@ void	PmergeMe::phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int 
 	std::vector<int> biggest;
 	std::vector<std::pair<int, int> >::iterator it;
 
-	// Separa i numeri in biggest e lowest
-	//*Here is the separations of the pair checking
-	//* who's going to the main array
 	for (it = vectorPairs.begin(); it != vectorPairs.end(); ++it)
 	{
 		comp++;
@@ -204,44 +191,35 @@ void	PmergeMe::phase2vector(std::vector<std::pair<int, int> >& vectorPairs, int 
 			lowest.push_back(it->first);
 		}
 	}
-
-	// Gestisci l'elemento rifiutato se il numero di elementi è dispari
 	if (odd)
 		lowest .push_back(rejected);
 
-	// Ordina i numeri più grandi
-	//questo dovrebbe essere ricorsivo e gestire le coppie grandi
+	//this is for memory management
 	{
-		//this is for memory
 		std::deque<int> faker;
-		sortBiggest(faker, biggest, 0);
+		mergeSort(vectorAlgorithm, faker, 0, vectorAlgorithm.size() - 1, 1);
 	}
 
 	std::vector<int> jacob_insertion_sequence = build_jacob_insertion_sequence_vect(lowest.size());
 	std::vector<int> sorted_lowest;
 	int iterator = 0;
+
 	for (int i = 0; (size_t) i < jacob_insertion_sequence.size(); ++i)
 	{
-		int index = jacob_insertion_sequence[i]; //salvo l'indice dell'ultimo valore nella jacobstahl sequence
-		int item = lowest[index - 1]; //il valore nella posizione definita dalla sequenza verrà comparato con il main array lowest
+		int index = jacob_insertion_sequence[i];
+		int item = lowest[index - 1];
 		std::vector<int>::iterator insertion_point = std::lower_bound(sorted_lowest.begin(), sorted_lowest.end(), item);
 		sorted_lowest.insert(insertion_point, item);
 		iterator++;
 	}
-	// Inserisci gli elementi rimanenti in modo sequenziale
 	while ((size_t) iterator < lowest.size())
 	{
 		sorted_lowest.push_back(lowest[iterator]);
 		iterator++;
 	}
-
-	// Applica l'ordinamento finale utilizzando binarySearchSortDeq here insertion sort
 	binarySearchSortVec(biggest, sorted_lowest);
 }
 
-//if the vector is odd i save the last value
-//and i pop it out of the vector
-//2.1 funzione utilizzata per ordinare il vettore
 double	PmergeMe::vectorMergeInsert()
 {
 	clock_t	start, end;
@@ -251,7 +229,6 @@ double	PmergeMe::vectorMergeInsert()
 	std::vector<std::pair<int, int> >	pairs;
 
 	start = clock();
-
 	if (vectorAlgorithm.size() % 2 != 0)
 	{
 		odd = true;
@@ -290,38 +267,128 @@ void	PmergeMe::binarySearchSortDeq(std::deque<int>& biggest, std::deque<int>& lo
 }
 
 
-void	PmergeMe::sortBiggest(std::deque<int>& biggest, std::vector<int>& biggestVec, int who)
+void PmergeMe::mergeVec(std::vector<int>& vec, int left, int mid, int right)
 {
-	if (who == 1)
-	{
-		for (size_t i = 1; i < biggest.size(); i++)
-		{
-			size_t	value = biggest[i];
-			size_t	j = i - 1;
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
 
-			while (j != 0 && biggest[j] > (int)value)
-			{
-				biggest[j + 1] = biggest[j];
-				j--;
-			}
-			biggest[j + 1] = value;
-		}
+	std::vector<int> L(n1);
+	std::vector<int> R(n2);
+
+	for (int i = 0; i < n1; i++)
+	{
+		L[i] = vec[left + i];
 	}
-	else
+	for (int j = 0; j < n2; j++)
 	{
+		R[j] = vec[mid + 1 + j];
+	}
 
-		for (size_t i = 1; i < biggestVec.size(); i++)
+	int i = 0, j = 0, k = left;
+
+	while (i < n1 && j < n2)
+	{
+		if (L[i] <= R[j])
 		{
-			size_t	value = biggestVec[i];
-			size_t	j = i - 1;
-
-			while (j != 0 && biggestVec[j] > (int)value)
-			{
-				biggestVec[j + 1] = biggestVec[j];
-				j--;
-			}
-			biggestVec[j + 1] = value;
+			vec[k] = L[i];
+			i++;
 		}
+		else
+		{
+			vec[k] = R[j];
+			j++;
+		}
+		k++;
+	}
+
+	while (i < n1)
+	{
+		vec[k] = L[i];
+		i++;
+		k++;
+	}
+
+	while (j < n2)
+	{
+		vec[k] = R[j];
+		j++;
+		k++;
+	}
+}
+
+void PmergeMe::mergeDeq(std::deque<int>& deq, int left, int mid, int right)
+{
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
+
+	std::deque<int> L(n1);
+	std::deque<int> R(n2);
+
+	for (int i = 0; i < n1; i++)
+	{
+		L[i] = deq[left + i];
+	}
+	for (int j = 0; j < n2; j++)
+	{
+		R[j] = deq[mid + 1 + j];
+	}
+
+	int i = 0, j = 0, k = left;
+
+	while (i < n1 && j < n2)
+	{
+		if (L[i] <= R[j])
+		{
+			deq[k] = L[i];
+			i++;
+		}
+		else
+		{
+			deq[k] = R[j];
+			j++;
+		}
+		k++;
+	}
+
+	while (i < n1)
+	{
+		deq[k] = L[i];
+		i++;
+		k++;
+	}
+
+	while (j < n2)
+	{
+		deq[k] = R[j];
+		j++;
+		k++;
+	}
+}
+
+
+void PmergeMe::mergeSort(std::vector<int>& vec, std::deque<int>& deq,  int left, int right, int who)
+{
+	if (left < right && who == 1)
+	{
+		int mid = left + (right - left) / 2;
+
+		mergeSort(vec, deq, left, mid, who);
+
+		mergeSort(vec, deq, mid + 1, right, who);
+
+		mergeVec(vec, left, mid, right);
+	}
+	else if (left < right)
+	{
+		int mid = left + (right - left) / 2;
+
+		// Ordina la prima metà
+		mergeSort(vec, deq, left, mid, who);
+
+		// Ordina la seconda metà
+		mergeSort(vec, deq, mid + 1, right, who);
+
+		mergeDeq(deq, left, mid, right);
 	}
 }
 
@@ -331,7 +398,6 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 	std::deque<int> biggest;
 	std::deque<std::pair<int, int> >::iterator it;
 
-	// Separa i numeri in biggest e lowest
 	for (it = dequePairs.begin(); it != dequePairs.end(); ++it)
 	{
 		comp++;
@@ -347,25 +413,20 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 		}
 	}
 
-	// Gestisci l'elemento rifiutato se il numero di elementi è dispari
 	if (odd)
 		lowest .push_back(rejected);
 
-	// Ordina i numeri più grandi
+	//! For memory management
 	{
+
 		std::vector<int> faker;
-		sortBiggest(biggest, faker, 1);
+		mergeSort(faker, dequeAlgorithm, 0, dequeAlgorithm.size() - 1, 0);
 	}
 
-	std::deque<int> jacob_insertion_sequence = build_jacob_insertion_sequence_deq(lowest.size());
-	std::deque<int> sorted_lowest;
-	//we have this deque for the final sorted_pending sequence
-	// sorted_lowest.push_back(lowest[0]); // Inserisci il primo elemento
-	//here i need to understand well what happens
-	//what is the iterator for?
-	int iterator = 0;
-	//! this for only triggers if we have actually a jacob sequence
-	std::cout<<"morite "<<jacob_insertion_sequence.size()<<std::endl;
+	std::deque<int>	jacob_insertion_sequence = build_jacob_insertion_sequence_deq(lowest.size());
+	std::deque<int>	sorted_lowest;
+	int				iterator = 0;
+
 	for (int i = 0; (size_t) i < jacob_insertion_sequence.size(); ++i)
 	{
 		int index = jacob_insertion_sequence[i]; //salvo l'indice dell'ultimo valore nella jacobstahl sequence
@@ -374,7 +435,7 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 		sorted_lowest.insert(insertion_point, item);
 		iterator++;
 	}
-	// Inserisci gli elementi rimanenti in modo sequenziale
+
 	while ((size_t) iterator < lowest.size())
 	{
 		sorted_lowest.push_back(lowest[iterator]);
@@ -382,9 +443,6 @@ void PmergeMe::phase2Deque(std::deque<std::pair<int, int> >& dequePairs, int rej
 	}
 	binarySearchSortDeq(biggest, sorted_lowest);
 }
-
-
-
 
 //if the deque is odd i save the last value
 //and i pop it out of the deque;
@@ -410,9 +468,12 @@ double	PmergeMe::dequeMergeInsert()
 		std::pair<int, int>	tmpPair(*it, *(it + 1));
 		pairs.push_back(tmpPair);
 	}
-	phase2Deque(pairs, rejected, odd);
+
+	phase2Deque(pairs, rejected, odd);ù
+
 	end = clock();
 	double	elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
+
 	return (elapsed_time);
 }
 /*----deque merge insertion sort algorithm section end----*/
@@ -453,7 +514,7 @@ void	PmergeMe::mergeInsertionSort(char** argv, int ac)
 		std::cout<<""<<std::endl;
 	}
 	std::cout<<"Time to process a range of "<<ac<<" elements with std::vector : "<<std::fixed << std::showpoint << std::setprecision(5)<<vecDiff / 100<<" us"<<std::endl;
-	std::cout<<"Time to process a range of"<<ac<<" elements with std::deque : "<<std::fixed << std::showpoint << std::setprecision(5)<<deqDiff / 100<<" us"<<std::endl;
+	std::cout<<"Time to process a range of "<<ac<<" elements with std::deque : "<<std::fixed << std::showpoint << std::setprecision(5)<<deqDiff / 100<<" us"<<std::endl;
 	std::cout<<"\nand amount of comparisons for deque "<<comp<<std::endl;
 }
 /*----Output requested section part end----*/
